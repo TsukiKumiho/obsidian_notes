@@ -1,4 +1,7 @@
 {
   "cssTheme": "Minimal",
-  "theme": "system"
+  "theme": "system",
+  "textFontFamily": "Huawei Sans",
+  "monospaceFontFamily": "Huawei Sans",
+  "interfaceFontFamily": "Huawei Sans"
 }
