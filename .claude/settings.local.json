@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//mnt/c/Users/34406/Documents/Obsidian Vault/.claude/worktrees/**)",
-      "Read(//mnt/c/Users/34406/Documents/Obsidian Vault/.claude/worktrees/agent-aefcab00/**)"
+      "Read(//mnt/c/Users/34406/Documents/Obsidian Vault/.claude/worktrees/agent-aefcab00/**)",
+      "Bash(python *)"
     ]
   }
 }
