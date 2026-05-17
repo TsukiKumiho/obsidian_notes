@@ -65,7 +65,7 @@ $changes = git status --porcelain 2>&1
 if (-not $changes) {
     # No local changes, try to pull and push anyway (catch up with remote)
     try {
-        $pullResult = git pull --rebase 2>&1 | Out-String
+        $pullResult = git pull --rebase --autostash 2>&1 | Out-String
         if ($LASTEXITCODE -ne 0) {
             Write-Log "FAIL pull (no local changes)"
             Update-StatusFile "warning" "Pull failed (no local changes to commit)."
@@ -105,7 +105,7 @@ try {
 
 # ── Step 2: Pull from remote (rebase local commit on top) ──
 try {
-    $pullResult = git pull --rebase 2>&1 | Out-String
+    $pullResult = git pull --rebase --autostash 2>&1 | Out-String
     if ($LASTEXITCODE -ne 0) {
         Write-Log "FAIL pull"
         Show-Toast "Obsidian Sync FAILED" "git pull failed after commit" $true
