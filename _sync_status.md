@@ -1,9 +1,8 @@
 # Sync Status
 
-**[FAIL] failure** at 2026-05-17 20:14:27
+❌ **failure** — 2026-05-17 20:26:59
 
 Commit succeeded but pull failed.
 
-Output:
-fatal: unable to access 'https://github.com/3440627471/obsidian_notes.git/': Failed to connect to github.com port 443 after 22125 ms: Could not connect to server
-
+```git: 'pull --rebase --autostash' is not a git command. See 'git --help'.
+```
