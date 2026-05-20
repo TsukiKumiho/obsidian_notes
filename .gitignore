@@ -4,3 +4,6 @@ Thumbs.db
 .obsidian/cache/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.venv/
+__pycache__/
+*.pyc

@@ -1,0 +1,5 @@
+# 每行一个链接，支持 # 注释
+# 建议放你平时收藏的考研经验、408 技巧、数学方法论文章
+
+https://www.bilibili.com/read/cv19693873
+https://zhuanlan.zhihu.com/p/386685885
