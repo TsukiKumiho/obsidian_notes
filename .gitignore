@@ -8,3 +8,4 @@ Thumbs.db
 __pycache__/
 *.pyc
 2026外刊精读/
+.accelerate/
