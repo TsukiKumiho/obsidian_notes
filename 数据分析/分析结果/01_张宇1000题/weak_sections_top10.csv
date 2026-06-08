@@ -1,0 +1,4 @@
+﻿source_file,title,chapter,chapter_no,section,section_no,date_or_page,first_total,first_correct,first_wrong,first_rate,second_total,second_correct,second_wrong,second_rate,has_first_data,has_second_data,section_order,first_rate_pct,second_rate_pct
+01_张宇1000题.csv,张宇1000题 习题册正确率记录,第6章 数理统计,6.0,基础篇汇总,,,266,212,54,0.7969924812030075,0,0,0,,True,False,1,79.69924812030075,
+01_张宇1000题.csv,张宇1000题 习题册正确率记录,第9章 参数估计与假设检验,9.0,整本合计,,,266,212,54,0.7969924812030075,0,0,0,,True,False,7,79.69924812030075,
+01_张宇1000题.csv,张宇1000题 习题册正确率记录,未分章,,零基础,,,10,10,0,1.0,0,0,0,,True,False,3,100.0,

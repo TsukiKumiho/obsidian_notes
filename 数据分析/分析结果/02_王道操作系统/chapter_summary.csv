@@ -1,0 +1,6 @@
+﻿chapter_no,chapter,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,avg_section_rate,sections_with_second_data,second_total,second_correct,second_wrong,first_rate,second_rate,weakest_section,weakest_rate
+1,第1章 计算机系统概述,6,6,130,91,39,0.7126262626262626,0,0,0,0,0.7,,1.4 操作系统结构,0.6363636363636364
+2,第2章 进程与线程,4,4,231,183,48,0.7997294892482347,0,0,0,0,0.7922077922077922,,2.1 进程与线程简介,0.726027397260274
+3,第3章 内存管理,2,0,0,0,0,,0,0,0,0,,,,
+4,第4章 文件管理,3,0,0,0,0,,0,0,0,0,,,,
+5,第5章 输入/输出管理,3,0,0,0,0,,0,0,0,0,,,,

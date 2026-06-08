@@ -1,0 +1,9 @@
+﻿chapter_no,chapter,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,avg_section_rate,sections_with_second_data,second_total,second_correct,second_wrong,first_rate,second_rate,weakest_section,weakest_rate
+1,第1章 绪论,2,0,0,0,0,,0,0,0,0,,,,
+2,第2章 线性表,3,0,0,0,0,,0,0,0,0,,,,
+3,第3章 栈、队列和数组,4,0,0,0,0,,0,0,0,0,,,,
+4,第4章 串,2,0,0,0,0,,0,0,0,0,,,,
+5,第5章 树与二叉树,5,0,0,0,0,,0,0,0,0,,,,
+6,第6章 图,4,0,0,0,0,,0,0,0,0,,,,
+7,第7章 查找,5,0,0,0,0,,0,0,0,0,,,,
+8,第8章 排序,7,0,0,0,0,,0,0,0,0,,,,

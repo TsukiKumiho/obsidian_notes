@@ -1,0 +1,7 @@
+﻿chapter_no,chapter,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,avg_section_rate,sections_with_second_data,second_total,second_correct,second_wrong,first_rate,second_rate,weakest_section,weakest_rate
+1,第1章 计算机网络体系结构,2,0,0,0,0,,0,0,0,0,,,,
+2,第2章 物理层,3,0,0,0,0,,0,0,0,0,,,,
+3,第3章 数据链路层,8,0,0,0,0,,0,0,0,0,,,,
+4,第4章 网络层,7,0,0,0,0,,0,0,0,0,,,,
+5,第5章 传输层,3,0,0,0,0,,0,0,0,0,,,,
+6,第6章 应用层,5,0,0,0,0,,0,0,0,0,,,,
