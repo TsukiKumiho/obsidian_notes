@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(where.exe python *)",
+      "PowerShell(python \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\\\\replace_charts.py\")"
+    ]
+  }
+}
