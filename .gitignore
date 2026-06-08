@@ -10,3 +10,5 @@ __pycache__/
 2026外刊精读/
 .accelerate/
 408计算机/王道课本/
+.claude\settings.json
+.claude\settings.local.json
