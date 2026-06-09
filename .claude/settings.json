@@ -10,7 +10,9 @@
       "PowerShell(git -C \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\" log --oneline -5 -- \"ϰ���excel.xlsx\")",
       "PowerShell(git -C \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\" show 692d95c:\"习题册excel.xlsx\" > \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\\\\习题册excel_restored.xlsx\" 2>&1; echo \"Exit: $LASTEXITCODE\")",
       "PowerShell(python \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\\\\rebuild_all.py\")",
-      "Bash(Remove-Item \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\\\\add_dir_summary.py\")"
+      "Bash(Remove-Item \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\\\\add_dir_summary.py\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\34406\\\\Documents\\\\Obsidian Vault\" -Depth 2 -Name)",
+      "Bash(Select-Object -First 60)"
     ]
   }
 }
