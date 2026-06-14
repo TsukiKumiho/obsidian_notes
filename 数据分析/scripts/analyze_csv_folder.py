@@ -26,19 +26,27 @@ def safe_filename(name: str) -> str:
 
 def setup_plot_style() -> str:
     warnings.filterwarnings("ignore")
-    available_fonts = {font.name for font in font_manager.fontManager.ttflist}
-    preferred_fonts = [
-        "Microsoft YaHei",
-        "SimHei",
-        "Noto Sans CJK SC",
-        "Source Han Sans SC",
-        "Arial Unicode MS",
+    sns.set_style('darkgrid')
+
+    font_candidates = [
+        'C:/Windows/Fonts/msyh.ttc',
+        'C:/Windows/Fonts/simhei.ttf',
+        'C:/Windows/Fonts/simsun.ttc',
+        '/System/Library/Fonts/PingFang.ttc',
+        '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc',
     ]
-    chosen_font = next((font for font in preferred_fonts if font in available_fonts), "DejaVu Sans")
-    plt.rcParams["font.sans-serif"] = [chosen_font]
-    plt.rcParams["axes.unicode_minus"] = False
-    plt.rcParams["figure.dpi"] = 130
-    sns.set_theme(style="whitegrid", font=chosen_font, rc={"axes.unicode_minus": False})
+    chosen_font = "DejaVu Sans"
+    for font_path in font_candidates:
+        if Path(font_path).exists():
+            font_manager.fontManager.addfont(font_path)
+            chosen_font = font_manager.FontProperties(fname=font_path).get_name()
+            break
+
+    plt.rcParams['font.family'] = chosen_font
+    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'SimHei', 'SimSun', 'WenQuanYi Micro Hei', 'Arial Unicode MS']
+    plt.rcParams['axes.unicode_minus'] = False
+    plt.rcParams['figure.figsize'] = (14, 6)
+    plt.rcParams['figure.dpi'] = 100
     return chosen_font
 
 
