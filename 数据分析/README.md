@@ -12,7 +12,10 @@
 │   ├── export_xlsx_to_csv.py          # xlsx → CSV 导出（含公式求值器）
 │   ├── analyze_csv_folder.py          # 批量分析 CSV → 报告+图表
 │   ├── visualize_408.py               # 408 四科可视化（6张图+报告）
-│   └── rw_analyze.py                  # 软微初试/录取成绩分析
+│   ├── rw_analyze.py                  # 软微初试/录取成绩分析
+│   ├── deep_analysis.py               # 408 深度分析（5维度）
+│   ├── analyze_single_408.py          # 408 单科分析
+│   └── generate_latex.py              # LaTeX 报告生成
 │
 ├── csv/                               # 导出的 CSV 文件
 │   ├── manifest.csv
@@ -22,7 +25,7 @@
 │   ├── 04_王道数据结构.csv
 │   └── 05_王道计网.csv
 │
-├── 软微/                              # 软微原始数据 (2020-2026)
+├── 软微/                              # 软微原始数据（2020-2026）
 │   ├── 20xx初试.xlsx
 │   └── 20xx录取.xlsx
 │
@@ -41,7 +44,17 @@
 │   ├── 408_weak_sections.png          # 薄弱小节
 │   ├── 408_zhenti_vs_zibian.png       # 真题 vs 自编
 │   ├── 408_distribution.png           # 分布 & 散点
-│   └── 软微/                          # 软微图表 (27张)
+│   ├── 408_wrong_count.png            # 错题绝对量
+│   ├── 408_quadrant.png               # 题量-正确率象限
+│   ├── 408_cross_subject.png          # 跨科关联
+│   ├── 408_target_gap.png             # 目标差距
+│   ├── 408_gap_significance.png       # 真题-自编差距
+│   └── 软微/                          # 软微图表（27张）
+│
+├── latex/                             # LaTeX 报告
+│   ├── 408分析报告.tex
+│   └── output/
+│       └── 408分析报告.pdf
 │
 └── 习题册数据分析.ipynb               # Jupyter Notebook
 ```
