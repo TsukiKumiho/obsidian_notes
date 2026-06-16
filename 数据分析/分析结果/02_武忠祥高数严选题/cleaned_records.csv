@@ -1,0 +1,10 @@
+﻿source_file,title,chapter,chapter_no,section,section_no,date_or_page,first_total,first_correct,first_wrong,first_rate,second_total,second_correct,second_wrong,second_rate,has_first_data,has_second_data,section_order,first_rate_pct,second_rate_pct
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第一章 函数 极限 连续,,,0,0,0,,0,0,0,,False,False,1,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第二章 一元函数微分学,,,0,0,0,,0,0,0,,False,False,2,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第三章 一元函数积分学,,,0,0,0,,0,0,0,,False,False,3,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第四章 常微分方程,,,0,0,0,,0,0,0,,False,False,4,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第五章 多元函数微分学,,,0,0,0,,0,0,0,,False,False,5,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第六章 二重积分,,,0,0,0,,0,0,0,,False,False,6,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第七章 无穷级数 (仅数学一、三),,,0,0,0,,0,0,0,,False,False,7,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第八章 向量代数与空间解析几何及多元微分学在几何上的应用 (仅数学一),,,0,0,0,,0,0,0,,False,False,8,,
+02_武忠祥高数严选题.csv,高等数学辅导讲义严选题 习题正确率记录,未分章,,第九章 多元函数积分学及其应用 (仅数学一),,,0,0,0,,0,0,0,,False,False,9,,

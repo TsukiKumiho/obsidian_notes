@@ -1,2 +1,2 @@
-﻿source_file,title,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,first_rate,first_avg_section_rate,sections_with_second_data,second_total,second_correct,second_wrong,second_rate
-02_王道操作系统.csv,王道操作系统 课后习题正确率记录,18,10,361,274,87,0.7590027700831025,0.7474675532750514,0,0,0,0,
+﻿source_file,title,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,first_rate,first_avg_section_rate
+王道操作系统,王道操作系统 课后习题正确率记录,18,16,650,484,166,0.7446153846153846,0.768595135881941

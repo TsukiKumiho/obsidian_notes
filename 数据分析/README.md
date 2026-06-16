@@ -1,38 +1,83 @@
 # 习题册数据分析
 
-这个项目先把 `习题册excel.xlsx` 拆成 CSV，方便后续用 Python 做分析。
-
 ## 文件结构
 
-- `scripts/export_xlsx_to_csv.py`：把 xlsx 的每个可见工作表导出为单独 CSV。
-- `scripts/analyze_csv_folder.py`：扫描 `csv/` 下所有 CSV，逐表分析并导出到对应文件夹。
-- `csv/`：导出的 CSV 文件。
-- `csv/manifest.csv`：记录每个工作表对应的 CSV 文件。
-- `分析结果/`：批量分析输出目录，每张表一个文件夹，另有 `_汇总/` 横向对比。
-- `习题册数据分析.ipynb`：Notebook 版本，包含单表测试和批量导出入口。
+```
+数据分析/
+├── README.md                          # 本文件
+├── 408分析报告.md                      # 408 四科完成情况（含图表）
+├── 软微分析报告.md                     # 软微历年成绩分析
+│
+├── scripts/
+│   ├── export_xlsx_to_csv.py          # xlsx → CSV 导出（含公式求值器）
+│   ├── analyze_csv_folder.py          # 批量分析 CSV → 报告+图表
+│   ├── visualize_408.py               # 408 四科可视化（6张图+报告）
+│   └── rw_analyze.py                  # 软微初试/录取成绩分析
+│
+├── csv/                               # 导出的 CSV 文件
+│   ├── manifest.csv
+│   ├── 01_张宇1000题.csv
+│   ├── 02_王道操作系统.csv
+│   ├── 03_王道计组.csv
+│   ├── 04_王道数据结构.csv
+│   └── 05_王道计网.csv
+│
+├── 软微/                              # 软微原始数据 (2020-2026)
+│   ├── 20xx初试.xlsx
+│   └── 20xx录取.xlsx
+│
+├── 分析结果/                           # 逐表分析输出
+│   ├── 01_张宇1000题/
+│   ├── 02_王道操作系统/
+│   ├── 03_王道计组/
+│   ├── 04_王道数据结构/
+│   ├── 05_王道计网/
+│   └── _汇总/                         # 横向对比
+│
+├── figures/                           # 图表输出
+│   ├── 408_overview.png               # 四科总览
+│   ├── 408_heatmap.png                # 章节热力图
+│   ├── 408_chapter_ranking.png        # 章节排名
+│   ├── 408_weak_sections.png          # 薄弱小节
+│   ├── 408_zhenti_vs_zibian.png       # 真题 vs 自编
+│   ├── 408_distribution.png           # 分布 & 散点
+│   └── 软微/                          # 软微图表 (27张)
+│
+└── 习题册数据分析.ipynb               # Jupyter Notebook
+```
 
-## 重新导出
+## 当前 408 进度
 
-在 Obsidian Vault 根目录运行：
+| 科目 | 正确率 | 题量 | 状态 |
+|:---|:---:|:---:|:---|
+| DS 数据结构 | 85.4% | 595 | 一刷完成 |
+| CO 计组 | 73.8% | 592 | 一刷完成 |
+| OS 操作系统 | 74.5% | 650 | 一刷完成 |
+| CN 计网 | — | — | 未开始 |
+| **三科合计** | **77.8%** | **1837** | 估分 ~119 |
 
+## 运行指令
+
+### 导出 CSV
 ```powershell
 & 'D:\Miniconda3\envs\py313_pip_only\python.exe' 数据分析\scripts\export_xlsx_to_csv.py
 ```
 
-说明：CSV 本身不能保存多工作表结构，所以这里采用“一张工作表一个 CSV”的方式。隐藏工作表默认不会导出。
-
-## 批量分析并导出
-
-在 Obsidian Vault 根目录运行：
-
+### 批量分析
 ```powershell
 & 'D:\Miniconda3\envs\py313_pip_only\python.exe' 数据分析\scripts\analyze_csv_folder.py --clean
 ```
 
-输出会进入 `数据分析/分析结果/`：
+### 408 可视化
+```powershell
+& 'D:\Miniconda3\envs\py313_pip_only\python.exe' 数据分析\scripts\visualize_408.py
+```
 
-- `01_张宇1000题/`、`02_王道操作系统/` 等：每张 CSV 对应一个文件夹，便于留存。
-- 每个表格文件夹包含原始 CSV 副本、`cleaned_records.csv`、`overall_summary.csv`、`chapter_summary.csv`、`weak_sections_top10.csv`、`section_heatmap.png`、`chapter_analysis.png` 和 `report.md`。
-- `_汇总/` 包含 `all_tables_summary.csv`、`all_cleaned_records.csv` 和 `all_tables_comparison.png`。
+### 软微分析
+```powershell
+& 'D:\Miniconda3\envs\py313_pip_only\python.exe' 数据分析\scripts\rw_analyze.py
+```
 
-如果不想清空旧的分析输出，可以去掉 `--clean`。
+## 中文字体
+
+所有脚本使用统一的字体配置（`msyh.ttc` > `simhei.ttf` > `simsun.ttc`），`sns.set_style` 之后需重新设置 `font.sans-serif` 和 `font.family`。

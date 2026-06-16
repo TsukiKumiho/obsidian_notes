@@ -1,6 +1,8 @@
 ﻿sheet,sheet_state,csv_file,rows,columns
 张宇1000题,visible,01_张宇1000题.csv,91,5
-王道操作系统,visible,02_王道操作系统.csv,30,9
-王道计组,visible,03_王道计组.csv,42,9
-王道数据结构,visible,04_王道数据结构.csv,47,9
-王道计网,visible,05_王道计网.csv,41,9
+武忠祥高数严选题,visible,02_武忠祥高数严选题.csv,16,14
+李林880专题,visible,03_李林880专题.csv,112,14
+王道数据结构,visible,04_王道数据结构.csv,47,22
+王道计组,visible,05_王道计组.csv,42,22
+王道操作系统,visible,06_王道操作系统.csv,30,22
+王道计网,visible,07_王道计网.csv,41,22
