@@ -1,7 +1,0 @@
-﻿chapter_no,chapter,sections_total,sections_with_first_data,first_total,first_correct,first_wrong,avg_section_rate,sections_with_second_data,second_total,second_correct,second_wrong,first_rate,second_rate,weakest_section,weakest_rate
-6.0,第6章 二次型,1,0,0,0,0,,0,0,0,0,,,,
-6.0,第6章 数理统计,3,1,257,203,54,0.7898832684824902,0,0,0,0,0.7898832684824902,,基础篇合计,0.7898832684824902
-9.0,第9章 二次型,1,0,0,0,0,,0,0,0,0,,,,
-9.0,第9章 参数估计与假设检验,8,0,0,0,0,,0,0,0,0,,,,
-18.0,第18章 多元函数积分学,2,0,0,0,0,,0,0,0,0,,,,
-,未分章,3,1,1,1,0,1.0,0,0,0,0,1.0,,零基础,1.0
