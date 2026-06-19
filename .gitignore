@@ -12,5 +12,8 @@ __pycache__/
 408计算机/王道课本/
 .claude/settings.json
 .claude/settings.local.json
-数据分析/kaoyan-main.zip
+# 成绩分析
+习题册.xlsx
+套卷成绩分析.xlsx
+数据分析/
 资料/
