@@ -1,0 +1,188 @@
+\documentclass[12pt]{ctexart}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{needspace}
+\setlength{\parindent}{0pt}
+\raggedbottom
+
+\newcounter{prob}
+\newenvironment{problem}{%
+  \needspace{8\baselineskip}%
+  \refstepcounter{prob}%
+  \textbf{\theprob.}\quad
+}{%
+  \par
+  \vspace*{5cm}
+  \vspace{\fill}
+}
+
+\begin{document}
+
+\begin{problem}
+设 $\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1\}$，则
+$\displaystyle\iiint_{\Omega}z^{2}\, dx\, dy\, dz =$
+\end{problem}
+
+\begin{problem}
+设 $f$ 为连续函数，$f(0,0,0) = 1$，$\Omega$ 为球心在原点、半径为 $r$ 的球体，则极限
+\[\lim_{r \rightarrow 0}\frac{1}{\pi r^{3}}\iiint_{\Omega}f(x,y,z)\, dv =\]
+\end{problem}
+
+\begin{problem}
+求由锥面 $z = \sqrt{x^{2} + y^{2}}$，平面 $y = x$，柱面 $x^{2} + y^{2} = 2y$ 以及 $xOy$ 面所围立体在第一卦限内的部分的体积。
+\end{problem}
+
+\begin{problem}
+设函数 $f(x,y,z)$ 连续，且 $f(x,y,z) = \sqrt{x^{2} + y^{2}} + z\displaystyle\iiint_{\Omega}f(x,y,z)\, dv$，
+其中 $\Omega = \{(x,y,z) \mid \sqrt{x^{2} + y^{2}} \leq z \leq 1\}$，求 $f(x,y,z)$ 的表达式。
+\end{problem}
+
+\begin{problem}
+设 $f(z)$ 连续，$\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1\}$。证明：
+\[\iiint_{\Omega}f(z)\, dv = \pi\int_{-1}^{1}f(z)\left(1 - z^{2}\right)dz\]
+\end{problem}
+
+\begin{problem}
+求 $\displaystyle\int_{L}y\, ds$，$L$ 为抛物线 $y^{2} = 2x$ 连接 $A(2,-2)$ 到 $B(8,4)$ 的弧。
+\end{problem}
+
+\begin{problem}
+求 $\displaystyle\int_{L}x^{2}\, ds$，$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = a^{2}\\ x - y = 0 \end{cases}$
+\end{problem}
+
+\begin{problem}
+设曲线 $L$ 为 $x^{2/3} + y^{2/3} = 1$，求 $L$ 的长度。
+\end{problem}
+
+\begin{problem}
+求 $\displaystyle\int_{L}(x + y^{2})\, ds$，$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = a^{2}\\ x + y + z = 0 \end{cases}$
+\end{problem}
+
+\begin{problem}
+已知曲线 $L$ 的方程为 $y = 1 - |x|\,(x \in [-1,1])$，起点是 $(-1,0)$，终点是 $(1,0)$，则
+$\displaystyle\int_{L}xy\, dx + x^{2}\, dy =$
+\end{problem}
+
+\begin{problem}
+求 $\displaystyle\int_{L}(x + y)\, dx + (y - x)\, dy$，$L$ 为圆周 $(x - 2)^{2} + y^{2} = 1$ 的上半圆，自 $A(1,0)$ 到 $B(3,0)$。
+\end{problem}
+
+\begin{problem}
+$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = 1\\ x^{2} + y^{2} + z^{2} = 2z \end{cases}$，从 $z$ 轴正向看去为逆时针方向，求 $\displaystyle\oint_{L}(x + y)\, dx$
+\end{problem}
+
+\begin{problem}
+$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = 2\\ x^{2} + y^{2} + z^{2} = 2z \end{cases}$，从 $z$ 轴正向看去为逆时针方向，求 $\displaystyle\oint_{L}|y - x|\, dx + z\, dz$
+\end{problem}
+
+\begin{problem}
+设 $L_{1}\colon x^{2}+y^{2}=1$，$L_{2}\colon x^{2}+y^{2}=2$，$L_{3}\colon x^{2}+2y^{2}=2$，$L_{4}\colon 2x^{2}+y^{2}=2$ 为四条逆时针方向的平面曲线，记
+\[I_{i} = \oint_{L_{i}}\Bigl(y + \frac{y^{3}}{6}\Bigr)dx + \Bigl(2x - \frac{x^{3}}{3}\Bigr)dy\quad(i = 1,2,3,4)\]
+则 $\max\{I_{1},I_{2},I_{3},I_{4}\} = (\quad)$\\[2pt]
+(A)~$I_{1}$\qquad (B)~$I_{2}$\qquad (C)~$I_{3}$\qquad (D)~$I_{4}$
+\end{problem}
+
+\begin{problem}
+已知 $L$ 是第一象限中从点 $(0,0)$ 沿圆周 $x^{2} + y^{2} = 2x$ 到点 $(2,0)$，再沿圆周 $x^{2} + y^{2} = 4$ 到点 $(0,2)$ 的曲线段。计算
+$I = \displaystyle\int_{L}3x^{2}y\, dx + (x^{3} + x - 2y)\, dy$
+\end{problem}
+
+\begin{problem}
+设在上半平面 $D = \{(x,y) \mid y > 0\}$ 内，函数 $f(x,y)$ 具有连续偏导数，且对任意的 $t > 0$ 都有 $f(tx,ty) = t^{-2}f(x,y)$。证明：对 $D$ 内的任意分段光滑的有向简单闭曲线 $L$，都有
+$\displaystyle\oint_{L}yf(x,y)\, dx - xf(x,y)\, dy = 0$。
+\end{problem}
+
+\begin{problem}
+验证 $\displaystyle\int_{(0,0)}^{(\pi/2,\,1)}(2xy^{3} - y^{2}\cos x)\, dx + (1 - 2y\sin x + 3x^{2}y^{2})\, dy$ 与路径无关，并计算该积分。
+\end{problem}
+
+\begin{problem}
+设 $f(x)$ 有二阶连续导数，且 $f(0) = 0$，$f'(0) = -1$。已知曲线积分
+\[\int_{L}\bigl[xe^{2x} - 6f(x)\bigr]\sin y\, dx - \bigl[5f(x) - f'(x)\bigr]\cos y\, dy\]
+与积分路径无关，求 $f(x)$。
+\end{problem}
+
+\begin{problem}
+设 $\Sigma = \{(x,y,z) \mid x + y + z = 1,\, x \geq 0,\, y \geq 0,\, z \geq 0\}$，则 $\displaystyle\iint_{\Sigma}y^{2}\, dS =$
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}x^{2}\, dS$，其中 $\Sigma$ 为球心在原点的单位球面。
+\end{problem}
+
+\begin{problem}
+求 $\displaystyle\iint_{\Sigma}\frac{dS}{x^{2} + y^{2} + z^{2}}$，其中 $\Sigma$ 为介于平面 $z = 0$ 与 $z = 1$ 之间的柱面 $x^{2} + y^{2} = 1$。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}(x^{2} + y^{2})\, dS$，其中 $\Sigma$ 为 $z = \sqrt{x^{2} + y^{2}}$ 的表面。
+\end{problem}
+
+\begin{problem}
+设 $a,b,c$ 为实数，函数 $f(x,y,z) = ax^{2} + by^{2} + cz^{2}$ 在点 $(1,1,1)$ 处的方向导数中，沿方向 $\vec{l} = (1,2,2)$ 的方向导数最大，最大值为 $6$。\\
+(I) 求 $a,b,c$；\quad (II) 求曲面 $f(x,y,z) = 1$ 的面积。
+\end{problem}
+
+\begin{problem}
+设 $\Sigma$ 为曲面 $z = \sqrt{x^{2} + y^{2}}\,(0 \leq z \leq 1)$ 的上侧，则 $\displaystyle\iint_{\Sigma}z\, dxdy =$
+\end{problem}
+
+\begin{problem}
+曲面 $\Sigma$ 为锥面 $z = \sqrt{x^{2} + y^{2}}$ 的下侧，计算 $\displaystyle\iint_{\Sigma}(x + y + z)\, dxdy$。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}xyz\, dxdy$，$\Sigma$ 为锥面 $z = \sqrt{x^{2} + y^{2}}$ 上满足 $x \geq 0$，$y \geq 0$，$0 \leq z \leq 1$ 的那一部分的下侧。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}xz\, dxdy + xy\, dydz + yz\, dzdx$，$\Sigma$ 是抛物面 $z = x^{2} + y^{2}$ 被平面 $x = 0$，$y = 0$，$x = 1$，$y = 1$ 所截部分的上侧。
+\end{problem}
+
+\begin{problem}
+设有界区域 $\Omega$ 由平面 $x + y + z = 1$ 与三个坐标平面围成，$\Sigma$ 为 $\Omega$ 整个表面的外侧，计算
+$\displaystyle\iint_{\Sigma}(x^{2} + y^{2} + z^{2})\, dxdy$
+\end{problem}
+
+\begin{problem}
+设 $\Sigma$ 是曲面 $z = 1 - x^{2} - y^{2}$ 的前侧，计算 $\displaystyle\iint_{\Sigma}x\, dydz + y\, dzdx + z\, dxdy$
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}\frac{x\, dydz + y\, dzdx + z\, dxdy}{(x^{2} + y^{2} + z^{2})^{3/2}}$，其中 $\Sigma$ 为 $z = \sqrt{1 - x^{2} - y^{2}}$ 的上侧。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\iint_{\Sigma}xyz\, dxdy$，其中 $\Sigma$ 为 $z = \sqrt{1 - x^{2} - y^{2}}$ 在第一卦限中 $x \geq 0,\, y \geq 0$ 的部分的上侧。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\oint_{L}(y^{2} - z^{2})\, dx + (z^{2} - x^{2})\, dy + (x^{2} - y^{2})\, dz$，其中 $L$ 是上半球面 $x^{2} + y^{2} + z^{2} = 1\,(z \geq 0)$ 与柱面 $x^{2} + y^{2} = x$ 的交线。从 $z$ 轴正向看去，$L$ 沿逆时针方向。
+\end{problem}
+
+\begin{problem}
+计算 $\displaystyle\oint_{L}(y - z)\, dx + (z - x)\, dy + (x - y)\, dz$，其中 $L$ 是平面 $x + y + z = 1$ 与柱面 $x^{2} + y^{2} = 1$ 的交线，从 $z$ 轴正向看去，$L$ 为逆时针方向。
+\end{problem}
+
+\begin{problem}
+在球面 $x^{2} + y^{2} + z^{2} = 1$ 上取以 $A(1,0,0)$，$B(0,1,0)$，$C(0,0,1)$ 为顶点的球面三角形，如果面密度为 $\rho = x^{2} + y^{2}$，则此球面三角形的质量 $M =$
+\end{problem}
+
+\begin{problem}
+设 $\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1,\, z \geq 0\}$，则 $\Omega$ 的形心的竖坐标 $\bar{z} =$
+\end{problem}
+
+\begin{problem}
+设 $\Omega$ 是由锥面 $z = \sqrt{x^{2} + y^{2}}$ 与平面 $z = 1$ 围成的锥体，求 $\Omega$ 的形心坐标。
+\end{problem}
+
+\begin{problem}
+设直线 $L$ 过 $A(1,0,0)$，$B(0,1,1)$ 两点，将 $L$ 绕 $z$ 轴旋转一周得到曲面 $\Sigma$，$\Sigma$ 与平面 $z = 0$，$z = 1$ 所围成的立体为 $\Omega$。\\
+(I) 求曲面 $\Sigma$ 的方程；\quad (II) 求 $\Omega$ 的形心坐标。
+\end{problem}
+
+\begin{problem}
+在变力 $\vec{F} = (yz, zx, xy)$ 的作用下，质点由原点沿直线运动到椭球面 $\dfrac{x^{2}}{a^{2}} + \dfrac{y^{2}}{b^{2}} + \dfrac{z^{2}}{c^{2}} = 1$ 上第一卦限的点 $M(\xi,\eta,\zeta)$，问 $\xi,\eta,\zeta$ 取何值时，力 $\vec{F}$ 所作的功 $W$ 最大？并求出 $W$ 的最大值。
+\end{problem}
+
+\end{document}
