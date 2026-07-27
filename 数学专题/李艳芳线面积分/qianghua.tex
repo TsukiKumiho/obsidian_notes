@@ -1,0 +1,144 @@
+
+\subsection*{考点 II: 第一类曲线积分}
+
+例 3
+求 \(\int_L |x| ds\), \(L\) 为双纽线 \((x^2 + y^2)^2 = a^2(x^2 - y^2)(a > 0)\) 全弧段.
+第一类曲线积分的计算、双纽线.
+$\circ$ 双纽线关于 \(x\) 轴, \(y\) 轴均对称.
+$\circ$ \(|x|\) 既是关于 \(y\) 的偶函数, 又是关于 \(x\) 的偶函数.
+
+解 由对称性的结论可知, \(\int_{L} |x| \mathrm{d}s = 4 \int_{L_{1}} |x| \mathrm{d}s\), 其中 \(L_{1}\) 为 \(L\) 在第一象限中的部分. 在极坐标系下计算弧长. 写出 \(L\) 的极坐标方程.
+
+例4 设 \(L\) 为球面 \(x^{2} + y^{2} + z^{2} = 1\) 与平面 \(x + y + z = 0\) 的交线，则 \(\oint_{L} x y \mathrm{d}s =\) \rule{3cm}{0.4pt}.
+第一类曲线积分的计算、轮换对称性.
+能用参数方程计算吗？
+积分弧段有什么特点？
+
+
+\subsection*{考点 III: 第二类曲线积分}
+
+例 5
+设 L 是由点 A(1,0), 点 B(0,1), 点 C(-1,0) 三点从 A 到 B 再到 C 连成的折线, 则曲线积分 \(\int_{L} \frac{dx+dy}{|x|+|y|} =\)
+利用参数方程计算第二类曲线积分.
+解 \(L_1: y = -x + 1\), 其中 \(x\) 从 1 到 0. \(L_2: y = x + 1\), 其中 \(x\) 从 0 到 -1. \(\int_{L} \frac{dx+dy}{|x|+|y|} = \int_{L_1} \frac{dx+dy}{|x|+|y|} + \int_{L_2} \frac{dx+dy}{|x|+|y|}\)
+
+例6
+计算 \(\oint_{L} \frac{- ydx + xdy + z(4x^{2} + y^{2})dz}{4x^{2} + y^{2}}\) , 其中 \(L: \left\{ \begin{array}{l}4x^{2} + y^{2} = 1, \\ 2x + y + z = 1, \end{array} \right.\) 从 \(z\) 轴正向看去是逆时针的.
+轴正向看去是逆时针的.
+本题易错点: 计算方法的选择.
+积分弧段有何特点? 被积函数有何特点?
+
+
+\subsection*{考点 IV: 格林公式、积分与路径无关}
+
+例 7
+已知平面区域 \(D = \{(x, y) | 0 \le x \le \pi, 0 \le y \le \pi\}\), \(L\) 为 \(D\) 的正向边界. 试证:
+\begin{align*}
+(1) \quad & \oint_L xe^{\sin y} dy - ye^{-\sin x} dx = \oint_L xe^{-\sin y} dy - ye^{\sin x} dx; \\
+(2) \quad & \oint_L xe^{\sin y} dy - ye^{-\sin x} dx \ge 2\pi^2.
+\end{align*}
+第二类曲线积分的计算.
+曲线 L 有什么特点？平面区域 D 有什么特点？
+
+证明 (1) 利用格林公式.
+\[\oint_{L}x\mathrm{e}^{\sin y}\mathrm{d}y - y\mathrm{e}^{-\sin x}\mathrm{d}x =\] \[\oint_{L}x\mathrm{e}^{-\sin y}\mathrm{d}y - y\mathrm{e}^{\sin x}\mathrm{d}x =\]
+也可以如图将 \(L\) 分为4段,利用参数方程直接计算 \(\oint_{L}x\mathrm{e}^{-\sin y}\mathrm{d}y - y\mathrm{e}^{\sin x}\mathrm{d}x.\) \(\oint_{L}x\mathrm{e}^{\sin y}\mathrm{d}y - y\mathrm{e}^{-\sin x}\mathrm{d}x = \pi \int_{0}^{\pi}(\mathrm{e}^{\sin x} + \mathrm{e}^{-\sin x})\mathrm{d}x.\) 留作练习.
+
+(2) 利用第 (1) 问的结论.
+\begin{align*}
+\Phi_L x e^{\sin y} dy - y e^{-\sin x} dx = \\
+\frac{1}{2} (\Phi_L x e^{\sin y} dy - y e^{-\sin x} dx + \Phi_L x e^{-\sin y} dy - y e^{\sin x} dx)
+\end{align*}
+
+例8 设函数 \(\phi (y)\) 具有连续导数, 在围绕原点的任意分段光滑简单闭曲线 \(L\) 上, 曲线积分 \(\oint_{L} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}}\) 的值恒为同一常数. (I) 证明: 对右半平面 \(x > 0\) 内的任意分段光滑简单闭曲线 \(C\), 有 \(\oint_{C} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}} = 0\); (II) 求函数 \(\phi (y)\) 的表达式.
+第二类曲线积分的计算、积分与路径无关的条件.
+如何理解条件“在围绕原点的任意分段光滑简单闭曲线 L 上, 曲线积分 \(\oint_{L} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}}\) 的值恒为同一常数”?
+
+解 (1) 如图所示, 任取右半平面上一条分段光滑简单闭曲线 \(C\), 令 \(C\) 的正向为逆时针方向, \(A\), \(B\), \(M\), \(N\) 为 \(C\) 上四点, \(P\) 为左半平面上的 一点.
+记曲线 \(L_{1}\) 为依次过 \(B\) , \(P\) , \(A\) 且绕原点的一段弧 \(\widehat{BPA}\) , \(L_{2}\) 为依次过 \(A\) , \(M\) , \(B\) 的一段弧 \(\widehat{AMB}\) , \(L_{3}\) 为依次过 \(A\) , \(N\) , \(B\) 的一段弧 \(\widehat{ANB}\) , 则 \(L_{1} + L_{2}\) 和 \(L_{1} + L_{3}\) 均为围绕原点的简单闭曲线, 且 \(L_{2} + L_{3}^{-} = C\) .
+
+由题设知,
+\[ \oint_{L_1+L_2} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} = \oint_{L_1+L_3} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} \]
+因此,
+\[ \oint_{L_1+L_2} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} - \oint_{L_1+L_3} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} = \oint_C \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^2} = 0 \]
+(II) 由第 (I) 问的结论可知, 在右半平面上, 积分 \(\int_L \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4}\) 与路径无关.
+分别计算 \(\frac{\partial Q}{\partial x}\) , \(\frac{\partial P}{\partial y}\) .
+
+例9 计算第一类曲线积分 \(\oint_{L} \frac{\partial f}{\partial n} ds\)，其中 \(f(x, y) = (x - 2)^2 + y^2\)，\(L\) 为单位圆周 \(x^2 + y^2 = 1\)，\(n\) 为 \(L\) 的外法线向量。 两类曲线积分之间的联系、方向导数。 两类曲线积分之间的联系 平面曲线弧 \(L\) 上的两类曲线积分之间有如下联系： \(\int_{L} Pdx + Qdy = \int_{L} (P \cos \alpha + Q \cos \beta) ds,\) 其中 \(\alpha(x, y)\)，\(\beta(x, y)\) 为有向曲线弧 \(L\) 在点 \((x, y)\) 处的切向量的方向角。
+
+方向角与实际角度 \(\theta\) 的关系
+方向导数存在的充分条件
+若函数 \(f(x,y)\) 在点 \(P_0(x_0,y_0)\) 处可微分, \(e_t = (\cos \alpha, \cos \beta)\) 是与方向 \(l\) 同向的单位向量, 则
+\[ \frac{\partial f}{\partial l} \bigg|_{(x_0, y_0)} = f'_x(x_0, y_0) \cos \alpha + f'_y(x_0, y_0) \cos \beta, \]
+其中 \(\cos \alpha\), \(\cos \beta\) 是方向 \(e_t\) 的方向余弦.
+
+
+\subsection*{考点 V: 第一类曲面积分}
+
+例 10
+设薄片型物体 S 是圆锥面 \(z = \sqrt{x^2 + y^2}\) 被 \(z^2 = 2x\) 割下的有限部分, 其上任意一点处的密度为 \(\mu(x, y, z) = 9\sqrt{x^2 + y^2 + z^2}\), 记圆锥面与柱面的交线为 C.
+(I) 求 C 在 xOy 面上的投影曲线的方程;
+(II) 求 S 的质量 M.
+第一类曲面积分的应用、空间曲线的投影曲线的求法.
+若薄片型物体 S 的面密度为 \(\mu(x, y, z)\), 则 S 的质量为 \(M = \iint_S \mu(x, y, z) dS\).
+
+空间曲线 L :
+组
+\[
+\begin{cases}
+F(x, y, z) = 0, \\
+G(x, y, z) = 0
+\end{cases}
+\]
+线为
+\[
+\begin{cases}
+H(x, y) = 0, \\
+z = 0.
+\end{cases}
+\]
+
+
+\subsection*{考点 VI: 第二类曲面积分}
+
+例 12
+计算曲面积分 \(I = \iint_{\Sigma} \frac{x^2 + y^2}{x} dy dz + \sqrt{x^2 + y^2} dz dx + z dx dy\), 其中 \(\Sigma\) 为上半球面 \(x^2 + y^2 + z^2 = 4\) 被柱面 \((x-1)^2 + y^2 = 1\) 所截得部分的上侧.
+两类曲面积分之间的联系、合一投影法.
+可考虑利用两类曲面积分之间的联系将曲面投影到 xOy 面上计算.
+
+两类曲面积分之间的联系
+\[ \iint_{\Sigma} P dy dz + Q dz dx + R dx dy = \iint_{\Sigma} (P \cos \alpha + Q \cos \beta + R \cos \gamma) dS, \]
+其中 \(\cos \alpha\), \(\cos \beta\), \(\cos \gamma\) 为有向曲面 \(\Sigma\) 在点 \((x, y, z)\) 处的法向量的方向余弦.
+方向余弦怎么算? dydz, dzdx 如何转换到 dxdy?
+
+解 曲面方程为 \(z = \sqrt{4 - x^2 - y^2}\)，法向量 \(\mathbf{n}\) 与 \(z\) 轴正向成锐角。利用合一投影法直接计算，将所求曲面积分转化为关于 \(x\)，\(y\) 的曲面积分。
+$\circ$ 投影区域 \(D\) .
+$\circ$ 曲面 \(\Sigma\) 的法向量 \(\mathbf{n}\) .
+$\circ$ 计算 \(I\) .
+\[I = \iint_{\Sigma} \frac{x^2 + y^2}{x} dy dz + \sqrt{x^2 + y^2} dz dx + z dx dy =\]
+
+例 13
+设 Σ 为曲面 z = √x² + y²(1 ≤ x² + y² ≤ 4) 的下侧, f(x) 为连续函数. 计算
+\[I = \iint_{\Sigma} [xf(xy) + 2xy - y] dy dz + [yf(xy) + 2y + x] dz dx + [zf(xy) + z] dx dy.\]
+两类曲面积分之间的联系.
+被积函数含有抽象函数 f, 可考虑利用两类曲面积分之间的联系消去该抽象函数.
+典型错误: 补面再利用高斯公式.
+
+
+\subsection*{考点 VII: 高斯公式与斯托克斯公式}
+
+例 15
+\(\Sigma\) 是球面 \((x-a)^2 + (y-b)^2 + (z-c)^2 = r^2\) 的外侧, 计算 \(\iint_{\Sigma} x^2 dy dz + y^2 dz dx + z^2 dx dy.\)
+高斯公式、利用形心公式简化计算.
+
+
+\subsection*{考点 VIII: 多元积分的应用}
+
+例 18
+已知封闭曲面 S 的方程为 |x| + |y| + |z| = 1, 密度函数为 \(\rho = |x| + |z| + \frac{1}{3}z\), 求曲面 S 的重心.
+质心公式:
+\[ \bar{x} = \frac{\iiint\limits_{\Omega} x \rho dv}{\iiint\limits_{\Omega} M}, \quad \bar{y} = \frac{\iiint\limits_{\Omega} y \rho dv}{\iiint\limits_{\Omega} M}, \quad \bar{z} = \frac{\iiint\limits_{\Omega} z \rho dv}{\iiint\limits_{\Omega} M}, \]
+其中 \(M = \iiint\limits_{\Omega} \rho(x, y, z) dv\) 为物体的质量.
+曲面 S 有何特点?
+
+

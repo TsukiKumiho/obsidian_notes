@@ -1,13 +1,33 @@
 \documentclass[12pt]{ctexart}
-\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
-\usepackage{amsmath,amssymb}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{esint}
+\usepackage{fancyhdr}
 \usepackage{needspace}
-\setlength{\parindent}{0pt}
-\raggedbottom
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{framed}
+\usepackage{xcolor}
 
+% ---- Page style ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 第八章~~曲线积分与曲面积分}
+\fancyhead[R]{\small 第\,\thepage\,页}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0pt}
+
+% ---- Section formatting ----
+\titleformat{\section}{\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{}
+\titlespacing{\section}{0pt}{12pt}{6pt}
+\titlespacing{\subsection}{0pt}{8pt}{4pt}
+
+% ---- Problem environment ----
 \newcounter{prob}
-\newenvironment{problem}{%
-  \needspace{8\baselineskip}%
+\newenvironment{prob}{%
+  \needspace{12\baselineskip}%
   \refstepcounter{prob}%
   \textbf{\theprob.}\quad
 }{%
@@ -16,173 +36,576 @@
   \vspace{\fill}
 }
 
+% ---- Theory block (no answer blank) ----
+\newenvironment{theory}{%
+  \needspace{8\baselineskip}%
+}{%
+  \par\medskip
+}
+
 \begin{document}
 
-\begin{problem}
+% ===== Cover =====
+%\thispagestyle{empty}
+%\newgeometry{top=0cm,bottom=0cm,left=0cm,right=0cm}
+%\begin{center}
+%\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{ChatGPT Image 2026年7月27日 11_47_17.png}
+%\end{center}
+%\restoregeometry
+%\newpage
+
+% ===== Chapter title =====
+\section*{第八章~~多元函数积分学（数一专题）}
+\addcontentsline{toc}{section}{第八章 多元函数积分学}
+
+\vspace{6pt}
+
+% ================================================================
+\subsection*{第一部分~~基础讲义}
+
+% ---- 知识结构图 ----
+\vspace{4pt}
+\begin{center}
+\begin{tabular}{l}
+\textbf{第八章~~曲线积分与曲面积分} \\[4pt]
+\quad 曲线积分 \\
+\qquad $-$ 第一类曲线积分 \\
+\qquad $-$ 第二类曲线积分 —— 两类曲线积分之间的联系 \\
+\qquad $-$ 格林公式 —— 积分与路径无关的条件 \\[4pt]
+\quad 曲面积分 \\
+\qquad $-$ 第一类曲面积分 \\
+\qquad $-$ 第二类曲面积分 —— 两类曲面积分之间的联系 \\
+\qquad $-$ 高斯公式 —— 散度 \\
+\qquad $-$ 斯托克斯公式 —— 旋度 \\
+\end{tabular}
+\end{center}
+\vspace{4pt}
+% ================================================================
+
+\subsubsection*{一、曲线积分}
+
+\paragraph{1. 第一类曲线积分的定义}
+
+设 $L$ 为 $xOy$ 面内的一条光滑曲线弧，函数 $f(x,y)$ 在 $L$ 上有界。在 $L$ 上任意插入点列 $M_1,M_2,\dots,M_{n-1}$ 把 $L$ 分成 $n$ 个小段，第 $i$ 个小段长度为 $\Delta s_i$，$(\xi_i,\eta_i)$ 为第 $i$ 个小段上任意取定的点。若当各小弧段长度的最大值 $\lambda\to0$ 时，和式 $\sum_{i=1}^n f(\xi_i,\eta_i)\Delta s_i$ 的极限总存在且与分法及取法无关，则称此极限为 $f(x,y)$ 在 $L$ 上的第一类曲线积分：
+
+\[
+\int_L f(x,y)\,ds = \lim_{\lambda\to0}\sum_{i=1}^n f(\xi_i,\eta_i)\Delta s_i.
+\]
+
+\paragraph{2. 第一类曲线积分的性质}
+
+\begin{itemize}[itemsep=2pt]
+\item 线性性：$\int_L[\alpha f+\beta g]ds = \alpha\int_L f\,ds + \beta\int_L g\,ds$
+\item 可加性：若 $L=L_1\cup L_2$，则 $\int_L f\,ds = \int_{L_1}f\,ds + \int_{L_2}f\,ds$
+\item 若 $f\equiv1$，则 $\int_L ds = l$（$l$ 为 $L$ 的长度）
+\item 保序性：若 $f\le g$，则 $\int_L f\,ds \le \int_L g\,ds$；特别地 $|\int_L f\,ds| \le \int_L |f|\,ds$
+\end{itemize}
+
+\paragraph{3. 第一类曲线积分的计算}
+
+基本方法：将积分弧段参数化后化为定积分。
+
+\begin{itemize}[itemsep=4pt]
+\item 参数方程 $x=\varphi(t),\,y=\psi(t)\;(\alpha\le t\le\beta)$：
+\[
+\int_L f(x,y)\,ds = \int_\alpha^\beta f(\varphi(t),\psi(t))\sqrt{[\varphi'(t)]^2+[\psi'(t)]^2}\,dt
+\]
+\item $y=\psi(x)\;(x_0\le x\le x_1)$：$\displaystyle\int_L f(x,y)\,ds = \int_{x_0}^{x_1} f(x,\psi(x))\sqrt{1+[\psi'(x)]^2}\,dx$
+\item $x=\varphi(y)\;(y_0\le y\le y_1)$：类似
+\item 极坐标 $r=r(\theta)\;(\alpha\le\theta\le\beta)$：
+\[
+\int_L f(x,y)\,ds = \int_\alpha^\beta f(r\cos\theta,r\sin\theta)\sqrt{[r(\theta)]^2+[r'(\theta)]^2}\,d\theta
+\]
+\end{itemize}
+
+\paragraph{4. 第一类曲线积分的对称性}
+
+积分弧段关于坐标面对称时可利用对称性简化。空间曲线 $\Gamma$ 对 $x,y,z$ 具有轮换对称性时：
+\[
+\int_\Gamma f(x,y,z)\,ds = \int_\Gamma f(y,z,x)\,ds = \int_\Gamma f(z,x,y)\,ds
+= \frac13\int_\Gamma[f(x,y,z)+f(y,z,x)+f(z,x,y)]\,ds.
+\]
+
+\begin{prob}
+设 $L$ 为椭圆 $\frac{x^2}{4}+\frac{y^2}{3}=1$，其周长为 $a$，则 $\displaystyle\oint_L(2xy+3x^2+4y^2)\,ds =$
+\end{prob}
+
+\begin{prob}
+求 $\displaystyle\int_L y\,ds$，其中 $L$ 为抛物线 $y^2=x$ 上连接点 $A(0,0)$ 到点 $B(1,-1)$ 的曲线弧。
+\end{prob}
+
+\begin{prob}
+设 $L$ 为球面 $x^2+y^2+z^2=1$ 与平面 $x+y+z=0$ 的交线，则 $\displaystyle\oint_L z^2\,ds =$
+\end{prob}
+
+\paragraph{两类曲线积分的对比}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+曲线积分 & 积分元素 & 积分范围 & 是否有向 & 典型物理意义 \\
+\hline
+$\int_L f(x,y)ds$ & 弧长元素 & 曲线弧 & 不带方向 & 曲线形构件的质量 \\
+$\int_L \mathbf{F}\cdot d\mathbf{r}$ & 有向曲线元 & 有向曲线弧 & 带方向 & 变力沿曲线所做的功 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{二、第二类曲线积分}
+
+\paragraph{1. 定义}
+设 $L$ 为 $xOy$ 面内从 $A$ 到 $B$ 的有向光滑曲线弧，函数 $P(x,y),Q(x,y)$ 在 $L$ 上有界。在 $L$ 上沿方向插入点列将 $L$ 分成 $n$ 个有向小弧段 $\widetilde{M_{i-1}M_i}$，$\Delta x_i=x_i-x_{i-1}$，$\Delta y_i=y_i-y_{i-1}$。若和式 $\sum_{i=1}^n P(\xi_i,\eta_i)\Delta x_i$ 的极限总存在且与分法及取法无关，则称此极限为 $P(x,y)$ 在 $L$ 上对坐标 $x$ 的曲线积分，记作 $\int_L P(x,y)\,dx$。类似定义 $\int_L Q(x,y)\,dy$。
+
+\paragraph{2. 物理意义}
+$\int_L P\,dx+Q\,dy = \int_L \mathbf{F}\cdot d\mathbf{r}$，表示变力 $\mathbf{F}=(P,Q)$ 沿 $L$ 所做的功。
+
+\paragraph{3. 计算}
+设 $L$ 参数方程 $x=\varphi(t),y=\psi(t)$，$t$ 从 $\alpha$ 到 $\beta$（$\alpha$ 对应起点，$\beta$ 对应终点）：
+\[
+\int_L P\,dx+Q\,dy = \int_\alpha^\beta\bigl[P(\varphi(t),\psi(t))\varphi'(t)+Q(\varphi(t),\psi(t))\psi'(t)\bigr]dt.
+\]
+
+\begin{prob}
+计算 $\displaystyle\int_L xy\,dx$，其中 $L$ 为抛物线 $y^2=x$ 上从 $A(1,-1)$ 到 $B(1,1)$ 的一段弧。
+\end{prob}
+
+\paragraph{4. 两类曲线积分的联系}
+\[
+\int_L P\,dx+Q\,dy = \int_L(P\cos\alpha+Q\cos\beta)\,ds,\qquad
+\int_\Gamma P\,dx+Q\,dy+R\,dz = \int_\Gamma(P\cos\alpha+Q\cos\beta+R\cos\gamma)\,ds,
+\]
+其中 $\cos\alpha,\cos\beta,\cos\gamma$ 为曲线在点处的切向量方向余弦。
+
+\begin{prob}
+把 $\int_L P(x,y)\,dx+Q(x,y)\,dy$ 化成对弧长的曲线积分，其中 $L$ 为沿上半圆周 $x^2+y^2=2x$ 从 $(0,0)$ 到 $(1,1)$ 的曲线弧。
+\end{prob}
+
+\paragraph{5. 曲线积分的应用}
+第一类曲线积分：弧长、质量、重心、转动惯量。第二类曲线积分：变力做功、环流量。
+
+\begin{prob}
+质点 $P$ 沿以 $AB$ 为直径的半圆周从 $A(1,2)$ 运动到 $B(3,4)$，受变力 $\mathbf{F}$ 作用，$\mathbf{F}$ 的大小等于 $P$ 与原点距离，方向垂直于 $OP$ 且与 $y$ 轴正向夹角小于 $\pi/2$。求 $\mathbf{F}$ 对 $P$ 所做的功。
+\end{prob}
+
+\subsubsection*{三、格林公式与积分路径无关}
+
+\paragraph{1. 格林公式}
+设闭区域 $D$ 由分段光滑曲线 $L$ 围成，$P,Q$ 在 $D$ 上有一阶连续偏导数，则
+\[
+\iint_D\Bigl(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\Bigr)\,dxdy = \oint_L P\,dx+Q\,dy,
+\]
+其中 $L$ 取正向（沿 $L$ 行走时 $D$ 在左侧）。
+
+\begin{prob}
+计算 $\displaystyle\int_L\sin2x\,dx+2(x^2-1)y\,dy$，其中 $L$ 为 $y=\sin x$ 上从 $(0,0)$ 到 $(\pi,0)$ 的一段。
+\end{prob}
+
+\begin{prob}
+计算 $\displaystyle I=\oint_L\frac{x\,dy-y\,dx}{4x^2+y^2}$，其中 $L$ 是以 $(1,0)$ 为中心、$R>1$ 为半径的圆周，逆时针方向。
+\end{prob}
+
+\paragraph{2. 积分与路径无关的条件}
+设 $D$ 为单连通区域，$P,Q$ 在 $D$ 上有一阶连续偏导数，则以下条件等价：
+\begin{itemize}[itemsep=2pt]
+\item 对 $D$ 中任意分段光滑闭曲线 $C$，$\oint_C P\,dx+Q\,dy=0$；
+\item $D$ 中任意两点间的曲线积分与路径无关；
+\item 存在 $u(x,y)$ 使 $du=P\,dx+Q\,dy$（$u$ 为原函数）；
+\item 在 $D$ 内恒有 $\frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}$。
+\end{itemize}
+
+\begin{prob}
+若 $\displaystyle\int_L\frac{x\,dx-ay\,dy}{x^2+y^2-1}$ 在 $D=\{(x,y)\mid x^2+y^2<1\}$ 内与路径无关，则 $a=$
+\end{prob}
+
+\paragraph{3. 曲线积分基本定理}
+若 $\mathbf{F}=\nabla f$，则 $\int_L\mathbf{F}\cdot d\mathbf{r}=f(B)-f(A)$，其中 $L$ 为从 $A$ 到 $B$ 的任一分段光滑曲线。
+
+\begin{prob}
+设 $\frac{\partial f}{\partial x}=(2x+1)e^{2x-y}$，$f(0,y)=y+1$，$L_t$ 为从 $(0,0)$ 到 $(1,t)$ 的光滑曲线。计算 $\displaystyle I(t)=\int_{L_t}\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy$ 并求 $I(t)$ 的最小值。
+\end{prob}
+
+\paragraph{4. 全微分的原函数}
+$P\,dx+Q\,dy$ 在单连通区域 $D$ 内为全微分的充要条件：$\frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}$ 恒成立。求原函数的方法：折线法、积分法、凑微分法。
+
+\begin{prob}
+验证 $(\frac{y}{x}+x^2)dx+(\ln x-2y)dy$ 在右半平面 $x>0$ 内是某一函数 $u(x,y)$ 的全微分，并求 $u(x,y)$。
+\end{prob}
+
+\subsubsection*{四、曲面积分}
+
+\paragraph{1. 第一类曲面积分的定义与计算}
+设曲面 $\Sigma$ 光滑，$f$ 在 $\Sigma$ 上有界，分为 $n$ 小块 $\Delta S_i$ 作和 $\sum f(\xi_i,\eta_i,\zeta_i)\Delta S_i$ 的极限即为 $\iint_\Sigma f\,dS$。若 $\Sigma$ 由 $z=z(x,y)$ 给出，投影区域为 $D_{xy}$，则
+\[
+\iint_\Sigma f(x,y,z)\,dS = \iint_{D_{xy}} f(x,y,z(x,y))\sqrt{1+(z_x')^2+(z_y')^2}\,dxdy.
+\]
+
+\begin{prob}
+求抛物面壳 $z=\frac12(x^2+y^2)\,(0\le z\le1)$ 的质量，面密度 $\mu=z$。
+\end{prob}
+
+\paragraph{2. 第二类曲面积分的定义}
+设 $\Sigma$ 为光滑有向曲面，$R$ 在 $\Sigma$ 上有界，分为 $n$ 块 $\Delta S_i$，$\Delta S_i$ 在 $xOy$ 面上投影为 $(\Delta S_i)_{xy}$，和式 $\sum R(\xi_i,\eta_i,\zeta_i)(\Delta S_i)_{xy}$ 的极限即为 $\iint_\Sigma R\,dxdy$。类似定义对 $yOz$ 和 $zOx$ 的积分。
+
+\paragraph{3. 有向曲面法向量与方向余弦}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+曲面方程 & 曲面侧 & 法向量 & 方向余弦符号 \\
+\hline
+$z=z(x,y)$ & 上侧 & $(-z_x',-z_y',1)$ & $\cos\gamma>0$ \\
+$z=z(x,y)$ & 下侧 & $(z_x',z_y',-1)$ & $\cos\gamma<0$ \\
+$y=y(z,x)$ & 右侧 & $(-y_x',1,-y_z')$ & $\cos\beta>0$ \\
+$y=y(z,x)$ & 左侧 & $(y_x',-1,y_z')$ & $\cos\beta<0$ \\
+$x=x(y,z)$ & 前侧 & $(1,-x_y',-x_z')$ & $\cos\alpha>0$ \\
+$x=x(y,z)$ & 后侧 & $(-1,x_y',x_z')$ & $\cos\alpha<0$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{4. 第二类曲面积分的计算}
+\[
+\iint_\Sigma R(x,y,z)\,dxdy = \pm\iint_{D_{xy}}R(x,y,z(x,y))\,dxdy,
+\]
+上侧取正号，下侧取负号。曲面垂直于投影面时对应坐标积分为零。
+
+\paragraph{5. 两类曲面积分的联系}
+\[
+\iint_\Sigma P\,dydz+Q\,dzdx+R\,dxdy = \iint_\Sigma(P\cos\alpha+Q\cos\beta+R\cos\gamma)\,dS.
+\]
+
+\begin{prob}
+计算 $\displaystyle\iint_S\frac{x\,dydz+z^2\,dxdy}{x^2+y^2+z^2}$，$S$ 是 $x^2+y^2=R^2$ 与 $z=R,z=-R$ 所围立体表面的外侧。
+\end{prob}
+
+\begin{prob}
+计算 $\displaystyle\iint_\Sigma[f(x,y,z)+x]dydz+[2f(x,y,z)+y]dzdx+[f(x,y,z)+z]dxdy$，其中 $f$ 连续，$\Sigma$ 为平面 $x-y+z=1$ 在第四卦限部分的上侧。
+\end{prob}
+
+\subsubsection*{五、高斯公式与斯托克斯公式}
+
+\paragraph{1. 高斯公式（散度定理）}
+设 $\Omega$ 由分片光滑闭曲面 $\Sigma$ 围成，$P,Q,R$ 在 $\Omega$ 上有一阶连续偏导数：
+\[
+\iiint_\Omega\Bigl(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\Bigr)dv = \oiint_\Sigma P\,dydz+Q\,dzdx+R\,dxdy,
+\]
+其中 $\Sigma$ 取外侧。
+
+\begin{prob}
+计算 $\displaystyle\iint_\Sigma\frac{ax\,dydz+(z+a)^2\,dxdy}{(x^2+y^2+z^2)^{1/2}}$，$\Sigma$ 为下半球面 $z=-\sqrt{a^2-x^2-y^2}$ 的上侧，$a>0$。
+\end{prob}
+
+\begin{prob}
+计算 $\displaystyle I=\oiint_\Sigma x\,dydz+y\,dzdx+z\,dxdy$，$\Sigma$ 是 $2x^2+2y^2+z^2=4$ 的外侧。
+\end{prob}
+
+\paragraph{2. 散度}
+向量场 $\mathbf{A}=(P,Q,R)$ 的散度：$\operatorname{div}\mathbf{A}=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}=\nabla\cdot\mathbf{A}$。高斯公式可写为 $\iiint_\Omega\operatorname{div}\mathbf{A}\,dv=\oiint_\Sigma\mathbf{A}\cdot\mathbf{n}\,dS$。
+
+\begin{prob}
+向量场 $\mathbf{u}(x,y,z)=xy^2\mathbf{i}+ye^z\mathbf{j}+x\ln(1+z^2)\mathbf{k}$ 在点 $P(1,1,0)$ 处的散度 $\operatorname{div}\mathbf{u}=$
+\end{prob}
+
+\paragraph{3. 斯托克斯公式}
+设 $\Gamma$ 为分段光滑空间有向闭曲线，$\Sigma$ 为以 $\Gamma$ 为边界的分片光滑有向曲面（右手规则），$P,Q,R$ 有一阶连续偏导数：
+\[
+\oiint_\Sigma\begin{vmatrix}dydz&dzdx&dxdy\\ \frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\ P&Q&R\end{vmatrix}
+=\oint_\Gamma P\,dx+Q\,dy+R\,dz.
+\]
+也可用行列式或方向余弦形式表达。
+
+\begin{prob}
+设 $L$ 是柱面 $x^2+y^2=1$ 与平面 $z=x+y$ 的交线，从 $z$ 轴正向看去为逆时针方向，则 $\displaystyle\oint_L xz\,dx+x\,dy+\frac{y^2}{2}dz=$
+\end{prob}
+
+\paragraph{4. 旋度}
+$\mathbf{A}=(P,Q,R)$ 的旋度：
+\[
+\operatorname{rot}\mathbf{A}=\Bigl(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}\Bigr)\mathbf{i}
++\Bigl(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}\Bigr)\mathbf{j}
++\Bigl(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\Bigr)\mathbf{k}.
+\]
+斯托克斯公式可写为 $\iint_\Sigma\operatorname{rot}\mathbf{A}\cdot\mathbf{n}\,dS=\oint_\Gamma\mathbf{A}\cdot d\mathbf{r}$。
+
+\begin{prob}
+向量场 $\mathbf{A}(x,y,z)=(x+y+z)\mathbf{i}+xy\mathbf{j}+z\mathbf{k}$ 的旋度 $\operatorname{rot}\mathbf{A}=$
+\end{prob}
+
+\newpage
+
+% ================================================================
+\subsubsection*{考点~II：第一类曲线积分}
+
+\textbf{核心方法}：双纽线对称性、轮换对称性简化计算。\\
+\textbf{自问}：能用参数方程计算吗？积分弧段有什么特点？
+
+\begin{prob}
+求 $\displaystyle\int_L |x|\,ds$，$L$ 为双纽线 $(x^2+y^2)^2=a^2(x^2-y^2)\,(a>0)$ 全弧段。
+\end{prob}
+
+\begin{prob}
+设 $L$ 为球面 $x^2+y^2+z^2=1$ 与平面 $x+y+z=0$ 的交线，则 $\displaystyle\oint_L xy\,ds =$
+\end{prob}
+
+\subsubsection*{考点~III：第二类曲线积分}
+
+\textbf{核心方法}：利用参数方程直接计算。\\
+\textbf{易错}：计算方法的选择——积分弧段有何特点？被积函数有何特点？
+
+\begin{prob}
+设 $L$ 是由点 $A(1,0)$、$B(0,1)$、$C(-1,0)$ 三点从 $A$ 到 $B$ 再到 $C$ 连成的折线，则
+$\displaystyle\int_L\frac{dx+dy}{|x|+|y|}=$
+\end{prob}
+
+\begin{prob}
+计算 $\displaystyle\oint_L\frac{-y\,dx+x\,dy+z(4x^2+y^2)\,dz}{4x^2+y^2}$，其中 $L\colon\begin{cases}4x^2+y^2=1,\\2x+y+z=1,\end{cases}$ 从 $z$ 轴正向看去是逆时针的。
+\end{prob}
+
+\subsubsection*{考点~IV：格林公式、积分与路径无关}
+
+\textbf{核心方法}：利用格林公式将闭曲线化为二重积分；验证 $\frac{\partial Q}{\partial x}=\frac{\partial P}{\partial y}$ 判断路径无关。\\
+\textbf{自问}：曲线 $L$ 有什么特点？平面区域 $D$ 有什么特点？
+
+\begin{prob}
+已知平面区域 $D=\{(x,y)\mid 0\le x\le\pi,\,0\le y\le\pi\}$，$L$ 为 $D$ 的正向边界。试证：
+\begin{align*}
+\text{(1)}\quad & \oint_L xe^{\sin y}\,dy-ye^{-\sin x}\,dx = \oint_L xe^{-\sin y}\,dy-ye^{\sin x}\,dx;\\[2pt]
+\text{(2)}\quad & \oint_L xe^{\sin y}\,dy-ye^{-\sin x}\,dx \ge 2\pi^2.
+\end{align*}
+\end{prob}
+
+\begin{prob}
+设函数 $\varphi(y)$ 具有连续导数，在围绕原点的任意分段光滑简单闭曲线 $L$ 上，曲线积分 $\displaystyle\oint_L\frac{\varphi(y)\,dx+2xy\,dy}{2x^2+y^4}$ 的值恒为同一常数。
+\begin{enumerate}[label=(\textrm{\Roman*}),itemsep=2pt]
+\item 证明：对右半平面 $x>0$ 内的任意分段光滑简单闭曲线 $C$，有 $\displaystyle\oint_C\frac{\varphi(y)\,dx+2xy\,dy}{2x^2+y^4}=0$；
+\item 求函数 $\varphi(y)$ 的表达式。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+计算第一类曲线积分 $\displaystyle\oint_L\frac{\partial f}{\partial n}\,ds$，其中 $f(x,y)=(x-2)^2+y^2$，$L$ 为单位圆周 $x^2+y^2=1$，$\mathbf{n}$ 为 $L$ 的外法线向量。
+（提示：方向导数公式 $\frac{\partial f}{\partial l}=f_x'\cos\alpha+f_y'\cos\beta$，两类曲线积分联系 $\int_L Pdx+Qdy=\int_L(P\cos\alpha+Q\cos\beta)ds$）
+\end{prob}
+
+\subsubsection*{考点~V：第一类曲面积分}
+
+\textbf{核心方法}：空间曲线投影到坐标面、第一类曲面积分的应用（质量 $M=\iint_S\mu\,dS$）。
+
+\begin{prob}
+设薄片型物体 $S$ 是圆锥面 $z=\sqrt{x^2+y^2}$ 被 $z^2=2x$ 割下的有限部分，密度 $\mu(x,y,z)=9\sqrt{x^2+y^2+z^2}$，记圆锥面与柱面的交线为 $C$。
+\begin{enumerate}[label=(\textrm{\Roman*}),itemsep=2pt]
+\item 求 $C$ 在 $xOy$ 面上的投影曲线的方程；
+\item 求 $S$ 的质量 $M$。
+\end{enumerate}
+\end{prob}
+
+\subsubsection*{考点~VI：第二类曲面积分}
+
+\textbf{核心方法}：两类曲面积分之间的联系（合一投影法）——$\iint_\Sigma Pdydz+Qdzdx+Rdxdy=\iint_\Sigma(P\cos\alpha+Q\cos\beta+R\cos\gamma)dS$。\\
+\textbf{易错}：方向余弦怎么算？$dydz,dzdx$ 如何转换到 $dxdy$？
+
+\begin{prob}
+计算 $\displaystyle I=\iint_{\Sigma}\frac{x^2+y^2}{x}\,dydz+\sqrt{x^2+y^2}\,dzdx+z\,dxdy$，其中 $\Sigma$ 为上半球面 $x^2+y^2+z^2=4$ 被柱面 $(x-1)^2+y^2=1$ 所截得部分的上侧。
+\end{prob}
+
+\begin{prob}
+设 $\Sigma$ 为曲面 $z=\sqrt{x^2+y^2}\,(1\le x^2+y^2\le4)$ 的下侧，$f(x)$ 连续。计算
+\[
+I=\iint_{\Sigma}[xf(xy)+2xy-y]\,dydz+[yf(xy)+2y+x]\,dzdx+[zf(xy)+z]\,dxdy.
+\]
+（提示：利用两类曲面积分联系消去抽象函数 $f$；典型错误：补面再利用高斯公式）
+\end{prob}
+
+\subsubsection*{考点~VII：高斯公式与斯托克斯公式}
+
+\textbf{核心方法}：利用高斯公式将闭曲面积分化为三重积分；形心公式简化计算——$\iiint_\Omega x\,dv=\bar{x}\cdot V$。
+
+\begin{prob}
+$\Sigma$ 是球面 $(x-a)^2+(y-b)^2+(z-c)^2=r^2$ 的外侧，计算 $\displaystyle\oiint_{\Sigma}x^2\,dydz+y^2\,dzdx+z^2\,dxdy$。
+\end{prob}
+
+\subsubsection*{考点~VIII：多元积分的应用}
+
+\textbf{核心方法}：质心公式——$\bar{x}=\frac{\iiint_\Omega x\rho\,dv}{M}$，$\bar{y}=\frac{\iiint_\Omega y\rho\,dv}{M}$，$\bar{z}=\frac{\iiint_\Omega z\rho\,dv}{M}$，其中 $M=\iiint_\Omega\rho\,dv$。
+
+\begin{prob}
+已知封闭曲面 $S$ 的方程为 $|x|+|y|+|z|=1$，密度 $\rho=|x|+|z|+\frac13z$，求曲面 $S$ 的重心。
+\end{prob}
+
+\newpage
+
+% ================================================================
+\subsection*{第三部分~~强化习题}
+% ================================================================
+
+\setcounter{prob}{0}
+
+\begin{prob}
 设 $\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1\}$，则
 $\displaystyle\iiint_{\Omega}z^{2}\, dx\, dy\, dz =$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设 $f$ 为连续函数，$f(0,0,0) = 1$，$\Omega$ 为球心在原点、半径为 $r$ 的球体，则极限
 \[\lim_{r \rightarrow 0}\frac{1}{\pi r^{3}}\iiint_{\Omega}f(x,y,z)\, dv =\]
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求由锥面 $z = \sqrt{x^{2} + y^{2}}$，平面 $y = x$，柱面 $x^{2} + y^{2} = 2y$ 以及 $xOy$ 面所围立体在第一卦限内的部分的体积。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设函数 $f(x,y,z)$ 连续，且 $f(x,y,z) = \sqrt{x^{2} + y^{2}} + z\displaystyle\iiint_{\Omega}f(x,y,z)\, dv$，
 其中 $\Omega = \{(x,y,z) \mid \sqrt{x^{2} + y^{2}} \leq z \leq 1\}$，求 $f(x,y,z)$ 的表达式。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设 $f(z)$ 连续，$\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1\}$。证明：
 \[\iiint_{\Omega}f(z)\, dv = \pi\int_{-1}^{1}f(z)\left(1 - z^{2}\right)dz\]
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求 $\displaystyle\int_{L}y\, ds$，$L$ 为抛物线 $y^{2} = 2x$ 连接 $A(2,-2)$ 到 $B(8,4)$ 的弧。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求 $\displaystyle\int_{L}x^{2}\, ds$，$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = a^{2}\\ x - y = 0 \end{cases}$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设曲线 $L$ 为 $x^{2/3} + y^{2/3} = 1$，求 $L$ 的长度。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求 $\displaystyle\int_{L}(x + y^{2})\, ds$，$L\colon \begin{cases} x^{2} + y^{2} + z^{2} = a^{2}\\ x + y + z = 0 \end{cases}$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 已知曲线 $L$ 的方程为 $y = 1 - |x|\,(x \in [-1,1])$，起点是 $(-1,0)$，终点是 $(1,0)$，则
 $\displaystyle\int_{L}xy\, dx + x^{2}\, dy =$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求 $\displaystyle\int_{L}(x + y)\, dx + (y - x)\, dy$，$L$ 为圆周 $(x - 2)^{2} + y^{2} = 1$ 的上半圆，自 $A(1,0)$ 到 $B(3,0)$。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 $L\colon \begin{cases} x^{2} + y^{2} + z^{2} = 1\\ x^{2} + y^{2} + z^{2} = 2z \end{cases}$，从 $z$ 轴正向看去为逆时针方向，求 $\displaystyle\oint_{L}(x + y)\, dx$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 $L\colon \begin{cases} x^{2} + y^{2} + z^{2} = 2\\ x^{2} + y^{2} + z^{2} = 2z \end{cases}$，从 $z$ 轴正向看去为逆时针方向，求 $\displaystyle\oint_{L}|y - x|\, dx + z\, dz$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设 $L_{1}\colon x^{2}+y^{2}=1$，$L_{2}\colon x^{2}+y^{2}=2$，$L_{3}\colon x^{2}+2y^{2}=2$，$L_{4}\colon 2x^{2}+y^{2}=2$ 为四条逆时针方向的平面曲线，记
 \[I_{i} = \oint_{L_{i}}\Bigl(y + \frac{y^{3}}{6}\Bigr)dx + \Bigl(2x - \frac{x^{3}}{3}\Bigr)dy\quad(i = 1,2,3,4)\]
-则 $\max\{I_{1},I_{2},I_{3},I_{4}\} = (\quad)$\\[2pt]
+则 $\max\{I_{1},I_{2},I_{3},I_{4}\} = (\quad)$\\[4pt]
 (A)~$I_{1}$\qquad (B)~$I_{2}$\qquad (C)~$I_{3}$\qquad (D)~$I_{4}$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 已知 $L$ 是第一象限中从点 $(0,0)$ 沿圆周 $x^{2} + y^{2} = 2x$ 到点 $(2,0)$，再沿圆周 $x^{2} + y^{2} = 4$ 到点 $(0,2)$ 的曲线段。计算
 $I = \displaystyle\int_{L}3x^{2}y\, dx + (x^{3} + x - 2y)\, dy$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设在上半平面 $D = \{(x,y) \mid y > 0\}$ 内，函数 $f(x,y)$ 具有连续偏导数，且对任意的 $t > 0$ 都有 $f(tx,ty) = t^{-2}f(x,y)$。证明：对 $D$ 内的任意分段光滑的有向简单闭曲线 $L$，都有
 $\displaystyle\oint_{L}yf(x,y)\, dx - xf(x,y)\, dy = 0$。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 验证 $\displaystyle\int_{(0,0)}^{(\pi/2,\,1)}(2xy^{3} - y^{2}\cos x)\, dx + (1 - 2y\sin x + 3x^{2}y^{2})\, dy$ 与路径无关，并计算该积分。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设 $f(x)$ 有二阶连续导数，且 $f(0) = 0$，$f'(0) = -1$。已知曲线积分
 \[\int_{L}\bigl[xe^{2x} - 6f(x)\bigr]\sin y\, dx - \bigl[5f(x) - f'(x)\bigr]\cos y\, dy\]
 与积分路径无关，求 $f(x)$。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 设 $\Sigma = \{(x,y,z) \mid x + y + z = 1,\, x \geq 0,\, y \geq 0,\, z \geq 0\}$，则 $\displaystyle\iint_{\Sigma}y^{2}\, dS =$
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 计算 $\displaystyle\iint_{\Sigma}x^{2}\, dS$，其中 $\Sigma$ 为球心在原点的单位球面。
-\end{problem}
+\end{prob}
 
-\begin{problem}
+\begin{prob}
 求 $\displaystyle\iint_{\Sigma}\frac{dS}{x^{2} + y^{2} + z^{2}}$，其中 $\Sigma$ 为介于平面 $z = 0$ 与 $z = 1$ 之间的柱面 $x^{2} + y^{2} = 1$。
-\end{problem}
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\iint_{\Sigma}(x^{2} + y^{2})\, dS$，其中 $\Sigma$ 为 $z = \sqrt{x^{2} + y^{2}}$ 的表面。
-\end{problem}
+\begin{prob}
+计算 $\displaystyle I=\iint_{\Sigma}(x^2+y^2+z^2+x+y+z)\,dS$，其中 $\Sigma$ 为 $x^2+y^2=z^2\,(0\le z\le1)$ 的表面。
+\end{prob}
 
-\begin{problem}
-设 $a,b,c$ 为实数，函数 $f(x,y,z) = ax^{2} + by^{2} + cz^{2}$ 在点 $(1,1,1)$ 处的方向导数中，沿方向 $\vec{l} = (1,2,2)$ 的方向导数最大，最大值为 $6$。\\
-(I) 求 $a,b,c$；\quad (II) 求曲面 $f(x,y,z) = 1$ 的面积。
-\end{problem}
+\begin{prob}
+设 $a,b$ 为实数，函数 $z=2+ax^2+by^2$ 在点 $(3,4)$ 处的方向导数中，沿方向 $\vec{l}=-3\mathbf{i}-4\mathbf{j}$ 的方向导数最大，最大值为 $10$。\\[4pt]
+(I) 求 $a,b$；\qquad (II) 求曲面 $z=2+ax^2+by^2\,(z\ge0)$ 的面积。
+\end{prob}
 
-\begin{problem}
-设 $\Sigma$ 为曲面 $z = \sqrt{x^{2} + y^{2}}\,(0 \leq z \leq 1)$ 的上侧，则 $\displaystyle\iint_{\Sigma}z\, dxdy =$
-\end{problem}
+\begin{prob}
+设 $\Sigma$ 为曲面 $x^2+y^2+4z^2=4\,(z\ge0)$ 的上侧，则 $\displaystyle\iint_{\Sigma}\sqrt{4-x^2-4z^2}\,dxdy=$
+\end{prob}
 
-\begin{problem}
-曲面 $\Sigma$ 为锥面 $z = \sqrt{x^{2} + y^{2}}$ 的下侧，计算 $\displaystyle\iint_{\Sigma}(x + y + z)\, dxdy$。
-\end{problem}
+\begin{prob}
+曲面 $\Sigma$ 为锥面 $z^2=x^2+y^2\,(0\le z\le1)$ 的下侧，计算 $\displaystyle\iint_{\Sigma}|xyz|\,dxdy$。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\iint_{\Sigma}xyz\, dxdy$，$\Sigma$ 为锥面 $z = \sqrt{x^{2} + y^{2}}$ 上满足 $x \geq 0$，$y \geq 0$，$0 \leq z \leq 1$ 的那一部分的下侧。
-\end{problem}
+\begin{prob}
+计算 $\displaystyle\iint_{\Sigma}(x^2+y^2)\,dzdx+z\,dxdy$，$\Sigma$ 为锥面 $z=\sqrt{x^2+y^2}$ 上满足 $x\ge0$，$y\ge0$，$z\le1$ 的那一部分的下侧。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\iint_{\Sigma}xz\, dxdy + xy\, dydz + yz\, dzdx$，$\Sigma$ 是抛物面 $z = x^{2} + y^{2}$ 被平面 $x = 0$，$y = 0$，$x = 1$，$y = 1$ 所截部分的上侧。
-\end{problem}
+\begin{prob}
+计算 $\displaystyle\iint_{\Sigma}e^y\,dydz+ye^x\,dzdx+x^2y\,dxdy$，$\Sigma$ 是抛物面 $z=x^2+y^2$ 被平面 $x=0$，$x=1$，$y=0$，$y=1$ 所截部分的上侧。
+\end{prob}
 
-\begin{problem}
-设有界区域 $\Omega$ 由平面 $x + y + z = 1$ 与三个坐标平面围成，$\Sigma$ 为 $\Omega$ 整个表面的外侧，计算
-$\displaystyle\iint_{\Sigma}(x^{2} + y^{2} + z^{2})\, dxdy$
-\end{problem}
+\begin{prob}
+设有界区域 $\Omega$ 由平面 $2x+y+2z=2$ 与三个坐标平面围成，$\Sigma$ 为 $\Omega$ 整个表面的外侧，计算曲面积分
+$\displaystyle I=\iint_{\Sigma}(x^2+1)\,dydz-2y\,dzdx+3z\,dxdy$。
+\end{prob}
 
-\begin{problem}
-设 $\Sigma$ 是曲面 $z = 1 - x^{2} - y^{2}$ 的前侧，计算 $\displaystyle\iint_{\Sigma}x\, dydz + y\, dzdx + z\, dxdy$
-\end{problem}
+\begin{prob}
+设 $\Sigma$ 是曲面 $x=\sqrt{1-3y^2-3z^2}$ 的前侧，计算曲面积分
+$\displaystyle I=\iint_{\Sigma}x\,dydz+(y^3+2)\,dzdx+z^3\,dxdy$。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\iint_{\Sigma}\frac{x\, dydz + y\, dzdx + z\, dxdy}{(x^{2} + y^{2} + z^{2})^{3/2}}$，其中 $\Sigma$ 为 $z = \sqrt{1 - x^{2} - y^{2}}$ 的上侧。
-\end{problem}
+\begin{prob}
+计算曲面积分 $\displaystyle I=\iint_{\Sigma}xz\,dydz+2zy\,dzdx+3xy\,dzdy$，其中 $\Sigma$ 为曲面 $z=1-x^2-\dfrac{y^2}{4}\,(0\le z\le1)$ 的上侧。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\iint_{\Sigma}xyz\, dxdy$，其中 $\Sigma$ 为 $z = \sqrt{1 - x^{2} - y^{2}}$ 在第一卦限中 $x \geq 0,\, y \geq 0$ 的部分的上侧。
-\end{problem}
+\begin{prob}
+计算 $\displaystyle I=\iint_{\Sigma}x\,dydz+y\,dzdx+z\,dxdy$，其中 $\Sigma$ 为 $z=x^2+y^2$ 在第一卦限中 $0\le z\le1$ 的部分的上侧。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\oint_{L}(y^{2} - z^{2})\, dx + (z^{2} - x^{2})\, dy + (x^{2} - y^{2})\, dz$，其中 $L$ 是上半球面 $x^{2} + y^{2} + z^{2} = 1\,(z \geq 0)$ 与柱面 $x^{2} + y^{2} = x$ 的交线。从 $z$ 轴正向看去，$L$ 沿逆时针方向。
-\end{problem}
+\begin{prob}
+计算曲线积分 $\displaystyle I=\oint_{\Gamma}z^2\,dx+2xy\,dy+2yz\,dz$，其中 $\Gamma$ 是上半球面 $z=\sqrt{4-x^2-y^2}$ 与柱面 $x^2+y^2=2y$ 的交线。从 $z$ 轴正向看去，$\Gamma$ 沿逆时针方向。
+\end{prob}
 
-\begin{problem}
-计算 $\displaystyle\oint_{L}(y - z)\, dx + (z - x)\, dy + (x - y)\, dz$，其中 $L$ 是平面 $x + y + z = 1$ 与柱面 $x^{2} + y^{2} = 1$ 的交线，从 $z$ 轴正向看去，$L$ 为逆时针方向。
-\end{problem}
+\begin{prob}
+计算 $\displaystyle I=\oint_L(y^2-z^2)\,dx+(2z^2-x^2)\,dy+(3x^2-y^2)\,dz$，其中 $L$ 是平面 $x+y+z=2$ 与柱面 $|x|+|y|=1$ 的交线，从 $z$ 轴正向看去，$L$ 为逆时针方向。
+\end{prob}
 
-\begin{problem}
-在球面 $x^{2} + y^{2} + z^{2} = 1$ 上取以 $A(1,0,0)$，$B(0,1,0)$，$C(0,0,1)$ 为顶点的球面三角形，如果面密度为 $\rho = x^{2} + y^{2}$，则此球面三角形的质量 $M =$
-\end{problem}
+\begin{prob}
+在球面 $x^2+y^2+z^2=1$ 上取以 $A(1,0,0)$，$B(0,1,0)$，$C(0,0,1)$ 为顶点的球面三角形 $\Sigma$，如果面密度为 $\rho=x^2+z^2$，则此球面三角形的质量 $m=$
+\end{prob}
 
-\begin{problem}
-设 $\Omega = \{(x,y,z) \mid x^{2} + y^{2} + z^{2} \leq 1,\, z \geq 0\}$，则 $\Omega$ 的形心的竖坐标 $\bar{z} =$
-\end{problem}
+\begin{prob}
+设 $\Omega=\{(x,y,z)\mid x^2+y^2\le z\le1\}$，则 $\Omega$ 的形心的竖坐标 $\bar{z}=$
+\end{prob}
 
-\begin{problem}
-设 $\Omega$ 是由锥面 $z = \sqrt{x^{2} + y^{2}}$ 与平面 $z = 1$ 围成的锥体，求 $\Omega$ 的形心坐标。
-\end{problem}
+\begin{prob}
+设 $\Omega$ 是由锥面 $x^2+(y-z)^2=(1-z)^2\,(0\le z\le1)$ 与平面 $z=0$ 围成的锥体，求 $\Omega$ 的形心坐标。
+\end{prob}
 
-\begin{problem}
-设直线 $L$ 过 $A(1,0,0)$，$B(0,1,1)$ 两点，将 $L$ 绕 $z$ 轴旋转一周得到曲面 $\Sigma$，$\Sigma$ 与平面 $z = 0$，$z = 1$ 所围成的立体为 $\Omega$。\\
-(I) 求曲面 $\Sigma$ 的方程；\quad (II) 求 $\Omega$ 的形心坐标。
-\end{problem}
+\begin{prob}
+设直线 $L$ 过 $A(1,0,0)$，$B(0,1,1)$ 两点，将 $L$ 绕 $z$ 轴旋转一周得到曲面 $\Sigma$，$\Sigma$ 与平面 $z=0$，$z=2$ 所围成的立体为 $\Omega$。\\[4pt]
+(I) 求曲面 $\Sigma$ 的方程；\qquad (II) 求 $\Omega$ 的形心坐标。
+\end{prob}
 
-\begin{problem}
-在变力 $\vec{F} = (yz, zx, xy)$ 的作用下，质点由原点沿直线运动到椭球面 $\dfrac{x^{2}}{a^{2}} + \dfrac{y^{2}}{b^{2}} + \dfrac{z^{2}}{c^{2}} = 1$ 上第一卦限的点 $M(\xi,\eta,\zeta)$，问 $\xi,\eta,\zeta$ 取何值时，力 $\vec{F}$ 所作的功 $W$ 最大？并求出 $W$ 的最大值。
-\end{problem}
+\begin{prob}
+在变力 $\mathbf{F}=yz\mathbf{i}+zx\mathbf{j}+xy\mathbf{k}$ 的作用下，质点由原点沿直线运动到椭球面 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}+\dfrac{z^2}{c^2}=1$ 上第一卦限的点 $M(\xi,\eta,\zeta)$，问 $\xi,\eta,\zeta$ 取何值时，力 $\mathbf{F}$ 所作的功 $W$ 最大？并求出 $W$ 的最大值。
+\end{prob}
 
 \end{document}

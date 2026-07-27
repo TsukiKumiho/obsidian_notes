@@ -1,0 +1,619 @@
+
+- 曲线积分
+- 第一类曲线积分
+- 第二类曲线积分 —— 两类曲线积分之间的联系
+- 格林公式 —— 积分与路径无关的条件
+- 曲面积分
+- 第一类曲面积分
+- 第二类曲面积分 —— 两类曲面积分之间的联系
+- 高斯公式 —— 散度
+- 斯托克斯公式 —— 旋度
+
+
+\subsubsection*{第一类曲线积分的定义}
+
+
+设 L 为 xOy 面内的一条光滑曲线弧, 函数 f(x,y) 在 L 上有界. 在 L 上任意插入一点列 M_{1}, M_{2}, ..., M_{n}_{-}_{1} 把 L 分成 n 个小段. 设第 i 个小段的长度为 Δsi. 又 (ξ_{i}, η_{i}) 为第 i 个小段上任意取定的一点, 作乘积 f(ξ_{i}, η_{i})Δsi(i = 1, 2, ..., n), 并作和 ∑^{n}_{i}=_{1} f(ξ_{i}, η_{i})Δsi. 若当各小弧段的长度最大值 λ → 0 时, 这和极限总存在, 且与曲线弧 L 的分法及点 (ξ_{i}, η_{i}) 的取法无关, 则称此极限为函数 f(x,y) 在曲线弧 L 上对弧长的曲线积分或第一类曲线积分 (以后我们均采用第二种名称), 记作 ∫_{L} L f(x,y)ds, 即
+
+\[ \int_L f(x,y) ds = \lim_{\lambda \to 0} \sum_{i=1}^n f(\xi_i, \eta_i) \Delta s_i, \]
+
+其中 f(x,y) 叫做被积函数, L 叫做积分弧段.
+
+
+\subsubsection*{第一类曲线积分的性质}
+
+
+(1) 线性性 设 \(\alpha, \beta\) 为常数, 则
+\[ \int_L [\alpha f(x, y) + \beta g(x, y)] ds = \alpha \int_L f(x, y) ds + \beta \int_L g(x, y) ds. \]
+
+(2) 可加性 若积分弧段 \(L\) 可划分成两段光滑曲线弧 \(L_1\) 和 \(L_2\), 则
+\[ \int_L f(x, y) ds = \int_{L_1} f(x, y) ds + \int_{L_2} f(x, y) ds. \]
+
+(3) 若在区域 \(D\) 上, \(f(x, y) \equiv 1\), \(L\) 为 \(D\) 内一条分段光滑曲线, \(l\) 为 \(L\) 的长度, 则
+\[ l = \int_L ds. \]
+
+(4) 设在 L 上, \(f(x,y) \leq g(x,y)\), 则
+\[ \int_L f(x,y) \, \mathrm{d}s \leq \int_L g(x,y) \, \mathrm{d}s. \]
+
+特别地, 有
+\[ \left| \int_L f(x,y) \, \mathrm{d}s \right| \leq \int_L |f(x,y)| \, \mathrm{d}s. \]
+
+
+\subsubsection*{第一类曲线积分的计算}
+
+
+基本方法 将积分弧段参数化后把曲线积分化为定积分.
+
+设 \(f(x,y)\) 在曲线弧 \(L\) 上有定义且连续,
+
+(1) 曲线 \(L\) 由参数方程表示的情形 \(L\) 的参数方程为 \(x = \varphi(t)\), \(y = \psi(t) (\alpha \leq t \leq \beta)\). 若 \(\varphi(t)\), \(\psi(t)\) 在 \([\alpha, \beta]\) 上具有一阶连续导数, 且 \([\varphi'(t)]^2 + [\psi'(t)]^2 \neq 0\), 则曲线积分 \(\int_L f(x,y) ds\) 存在, 且
+\[ \int_L f(x,y) ds = \int_\alpha^\beta f(\varphi(t), \psi(t)) \sqrt{[\varphi'(t)]^2 + [\psi'(t)]^2} dt. \]
+
+(2)曲线 L 由 \(y = \psi(x)(x_0 \le x \le x_1)\) 表示的情形 可以把这种情况看作特殊的参数方程: \(x = x, y = \psi(x)(x_0 \le x \le x_1)\), 从而有
+\[ \int_L f(x, y) ds = \int_{x_0}^{x_1} f(x, \psi(x)) \sqrt{1 + [\psi'(x)]^2} dx. \]
+
+(3)曲线 L 由 \(x = \varphi(y)(y_0 \le y \le y_1)\) 表示的情形与 (2) 类似.(见讲义)
+
+(4)曲线 L 由极坐标形式 \(r = r(\theta)(\alpha \le \theta \le \beta)\) 表示的情形
+\[ \int_L f(x, y) ds = \int_{\alpha}^{\beta} f(r(\theta) \cos \theta, r(\theta) \sin \theta) \sqrt{[r(\theta)]^2 + [r'(\theta)]^2} d\theta. \]
+
+(5)空间曲线弧情形.(见讲义)
+
+\textbf{例1}
+设l为椭圆 \(\frac{x^2}{4} + \frac{y^2}{3} = 1\), 其周长为a, 则 \(\oint (2xy + 3x^2 + 4y^2)ds = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+\textbf{例2} 求 \(\int_{L} y ds\), 其中 \(L\) 为抛物线 \(y^2 = x\) 上连接点 \(A(0, 0)\) 到点 \(B(1, -1)\) 的曲线弧.
+
+
+\subsubsection*{第一类曲线积分的对称性}
+
+
+积分弧段关于坐标面对称.(见讲义)
+积分弧段关于变量具有轮换对称性.
+设分段光滑的空间曲线 Γ 对变量 x, y, z 具有轮换对称性 (即轮换坐标轴的名称, 曲线 Γ 的方程不变), f(x, y, z) 在 Γ 上连续, 则
+\begin{align*}
+\int_{\Gamma} f(x, y, z) \, \mathrm{d}s &= \int_{\Gamma} f(y, z, x) \, \mathrm{d}s = \int_{\Gamma} f(z, x, y) \, \mathrm{d}s \\
+&= \frac{1}{3} \int_{\Gamma} [f(x, y, z) + f(y, z, x) + f(z, x, y)] \, \mathrm{d}s.
+\end{align*}
+
+\textbf{例3} 设L为球面x²+y²+z²=1与平面x+y+z=0的交线,则ΦLz²ds=
+
+
+\subsubsection*{第二类曲线积分的定义}
+
+
+设 L 为 xOy 面内从点 A 到点 B 的一条有向光滑曲线弧, 函数 P(x, y) 与 Q(x, y) 在 L 上有界. 在 L 上沿 L 的方向任意插入一点列 M_{1}(x_{1}, y_{1}), M_{2}(x_{2}, y_{2}), · · · , M_{n}_{-}_{1}(x_{n}_{-}_{1}, y_{n}_{-}_{1}), 把 L 分成 n 个有向小弧段
+\[ \tilde{M}_{i-1} \tilde{M}_i (i = 1, 2, \dots, n; M_0 = A, M_n = B). \]
+设 Δx_{i} = x_{i} - x_{i}_{-}_{1}, Δy_{i} = y_{i} - y_{i}_{-}_{1}, 点 (ξ_{i}, η_{i}) 为 M_{i}_{-}_{1} M_{i} 上任意取定的点, 作乘积 P(ξ_{i}, η_{i}) Δx_{i} (i = 1, 2, · · · , n), 并作和 ∑^{n}_{i}_{-}_{1} P(ξ_{i}, η_{i}) Δx_{i}. 若当各小弧段长度的最大值 λ → 0 时, 这和极限总存在, 且与曲线弧 L 上的方法及点 (ξ_{i}, η_{i}) 的取法无关, 则称此极限为函数 P(x, y) 在有向曲线弧 L 上对坐标 x 的曲线积分, 记作 ∫_{L} P(x, y)dx.
+
+
+\subsubsection*{第二类曲线积分的物理意义}
+
+
+在应用上, 第二类曲线积分经常以向量形式出现. 令向量值函数 \(\mathbf{F}(x, y) = P(x, y)\mathbf{i} + Q(x, y)\mathbf{j}\), 积分弧段为 \(L\). 注意到 \(\mathrm{d}\mathbf{r} = \mathrm{d}x\mathbf{i} + \mathrm{d}y\mathbf{j}\), 若将 \(\mathbf{F}\) 看作变力, \(L\) 看作 \(\mathbf{F}\) 做功的路径, 则
+\[ \int_L \mathbf{F}(x, y) \cdot \mathrm{d}\mathbf{r} = \int_L P(x, y) \mathrm{d}x + Q(x, y) \mathrm{d}y \]
+表示变力 \(\mathbf{F}\) 沿路径 \(L\) 所做的功.
+
+
+\subsubsection*{第一类曲线积分与第二类曲线积分的比较}
+
+
+| 曲线积分 | 积分元素 | 积分范围 | 是否有向 | 典型物理意义 |
+| :--- | :--- | :--- | :--- | :--- |
+| ∫_{L} f(x,y)ds | 弧长元素 | 曲线弧 | 不带方向 | 曲线形构件的质量 |
+| ∫_{L} F(x,y)·dr | 有向曲线元 | 有向曲线弧 | 带方向 | 变力沿曲线所做的功 |
+
+第二类曲线积分的性质 (见讲义) 线性性、可加性、有向性.
+
+
+\subsubsection*{第二类曲线积分的计算}
+
+
+设 \(P(x,y)\) 与 \(Q(x,y)\) 在有向曲线弧 \(L\) 上有定义且连续， \(L\) 的参数方程为 \(\left\{ \begin{array}{l}x = \phi (t),\\ y = \psi (t). \end{array} \right.\) 当参数 \(t\) 单调地由 \(\alpha\) 变到 \(\beta\) 时，点 \(M(x,y)\) 从 \(L\) 的起点 \(A\) 沿 \(L\) 运动到终点 \(B\) . 若 \(\phi (t)\) 与 \(\psi (t)\) 在以 \(\alpha\) 和 \(\beta\) 为端点的闭区间上具有一阶连续导数，且 \([\phi '(t)]^2 +[\psi '(t)]^2 \neq 0\) ，则曲线积分 \(\int_{L}P(x,y)\mathrm{d}x + Q(x,y)\mathrm{d}y\) 存在，且
+\[\int_{L}P(x,y)\mathrm{d}x + Q(x,y)\mathrm{d}y = \int_{\alpha}^{\beta}[P(\phi (t),\psi (t))\phi '(t) + Q(\phi (t),\psi (t))\psi '(t)]\mathrm{d}t.\]
+在计算时需要注意，下限 \(\alpha\) 对应 \(L\) 的起点，上限 \(\beta\) 对应 \(L\) 的终点， \(\alpha\) 不一定小于 \(\beta\) .
+
+\textbf{例4} 计算 \(\int_{L} xydx\)，其中 \(L\) 为抛物线 \(y^2 = x\) 上从点 \(A(1, -1)\) 到点 \(B(1, 1)\) 的一段弧.
+
+
+\subsubsection*{两类曲线积分之间的联系}
+
+
+平面曲线弧 L 上的两类曲线积分之间有如下联系:
+\[ \int_L Pdx + Qdy = \int_L (P \cos \alpha + Q \cos \beta) ds, \]
+其中 \(\alpha(x, y)\), \(\beta(x, y)\) 为有向曲线弧 L 在点 \((x, y)\) 处的切向量的方向角.
+类似地, 空间曲线弧 Γ 上的两类曲线积分之间有如下联系:
+\[ \int_{\Gamma} Pdx + Qdy + Rdz = \int_{\Gamma} (P \cos \alpha + Q \cos \beta + R \cos \gamma) ds, \]
+其中 \(\alpha(x, y, z)\), \(\beta(x, y, z)\), \(\gamma(x, y, z)\) 为有向曲线弧 Γ 在点 \((x, y, z)\) 处的切向量的方向角.
+
+\textbf{例5} 把对坐标的曲线积分 \(\int_{L} P(x, y) dx + Q(x, y) dy\) 化成对弧长的曲线积分, 其中 \(L\) 为沿上半圆周 \(x^2 + y^2 = 2x\) 从点 \((0, 0)\) 到点 \((1, 1)\) 的曲线弧.
+
+
+\subsubsection*{曲线积分的应用 (见讲义)}
+
+
+第一类曲线积分的应用.
+第二类曲线积分的应用.
+
+\textbf{例6}
+质点 P 沿着以 AB 为直径的半圆周, 从点 A(1,2) 运动到点 B(3,4) 的过程中受变力 F 作用 (如图), F 的大小等于点 P 与原点 O 之间的距离, 其方向垂直于线段 OP, 且与 y 轴正向的夹角小于 \(\frac{\pi}{2}\). 求变力 F 对质点 P 所做的功.
+
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+---
+
+## 第二节 曲线积分（二）
+
+
+\subsubsection*{格林公式}
+
+
+设闭区域 D 由分段光滑的曲线 L 围成, 若函数 P(x,y) 及 Q(x,y) 在 D 上具有一阶连续偏导数, 则有
+\[ \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dxdy = \oint_L Pdx + Qdy, \]
+其中 L 是 D 的取正向的边界曲线.
+
+\textbf{例7} 计算曲线积分 \(\int_{L} \sin 2x dx + 2(x^2 - 1) y dy\), 其中 \(L\) 是曲线 \(y = \sin x\) 上从点 \((0, 0)\) 到点 \((\pi, 0)\) 的一段.
+
+\textbf{例8} 计算曲线积分 \(I = \oint_{L} \frac{xdy - ydx}{4x^2 + y^2}\)，其中 \(L\) 是以点 \((1,0)\) 为中心，\(R\) 为半径的圆周 \((R > 1)\)，取逆时针方向。
+
+
+\subsubsection*{积分与路径无关的条件}
+
+
+设 \(D\) 为平面中的单连通区域,函数 \(P(x,y)\) 和 \(Q(x,y)\) 在 \(D\) 上具有一阶连续偏导数,则以下条件相互等价:
+
+(1)对于 \(D\) 中任意分段光滑闭曲线 \(C\) ,都有
+\[\oint_{C}P\mathrm{d}x + Q\mathrm{d}y = 0;\]
+
+(2)对于 \(D\) 中从点 \(M_{1}\) 到点 \(M_{2}\) 的任意两条分段光滑曲线 \(L_{1}\) , \(L_{2}\) ,都有
+\[\int_{L_{1}}P\mathrm{d}x + Q\mathrm{d}y = \int_{L_{2}}P\mathrm{d}x + Q\mathrm{d}y;\]
+
+(3)存在在 \(D\) 上具有一阶连续偏导数的函数 \(u(x,y)\) ,使得 \(\mathrm{d}[u(x,y)] = P\mathrm{d}x + Q\mathrm{d}y\) , \(u(x,y)\) 被称为微分式 \(P\mathrm{d}x + Q\mathrm{d}y\) 在 \(D\) 中的一个原函数;
+
+(4)在 \(D\) 中,恒有
+\[\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}.\]
+
+\textbf{例9} 若曲线积分 \(\int_{L} \frac{xdx - aydy}{x^2 + y^2 - 1}\) 在区域 \(D = \{(x, y) | x^2 + y^2 < 1\}\) 内与路径无关, 则 \(a =\) ______.
+
+
+\subsubsection*{曲线积分的基本定理}
+
+
+设 \(F(x,y) = P(x,y)i + Q(x,y)j\) 是平面区域 \(D\) 内的一个向量场. 若 \(P(x,y)\) 与 \(Q(x,y)\) 都在 \(D\) 内连续, 且存在一个数量函数 \(f(x,y)\), 使得
+\[F = \nabla f = \frac{\partial f}{\partial x}i + \frac{\partial f}{\partial y}j,\]
+则曲线积分 \(\int_L F \cdot dr\) 在 \(D\) 内与路径无关, 且
+\[\int_L F \cdot dr = f(B) - f(A),\]
+其中 \(L\) 是位于 \(D\) 内起点为 \(A\), 终点为 \(B\) 的任一分段光滑曲线.
+
+\textbf{例10}
+设函数 \(f(x,y)\) 满足 \(\frac{\partial f(x,y)}{\partial x} = (2x+1)e^{2x-y}\), 且 \(f(0,y) = y+1\), \(L_t\) 是从点 \((0,0)\) 到点 \((1,t)\) 的光滑曲线. 计算曲线积分 \(I(t) = \int_{L_t} \frac{\partial f(x,y)}{\partial x} dx + \frac{\partial f(x,y)}{\partial y} dy\), 并求 \(I(t)\) 的最小值.
+
+
+\subsubsection*{全微分的原函数}
+
+
+(1) \(P(x,y)dx + Q(x,y)dy\) 为全微分的充分必要条件 设区域 \(D\) 是一个单连通区域, 若函数 \(P(x,y)\) 与 \(Q(x,y)\) 在 \(D\) 内具有一阶连续偏导数, 则 \(P(x,y)dx + Q(x,y)dy\) 在 \(D\) 内为某一函数 \(u(x,y)\) 的全微分的充分必要条件是 \(\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}\) 在 \(D\) 内恒成立.
+
+(2) 全微分方程 若一个微分方程能写成
+\[P(x,y)dx + Q(x,y)dy = 0\]
+的形式, 而 \(P(x,y)dx + Q(x,y)dy\) 为某一个函数 \(u(x,y)\) 的全微分, 则上述方程称为全微分方程, \(u(x,y) = C\) 是它的隐式通解, 其中 \(C\) 为任意常数.
+已知某微分式, 我们求其原函数 \(u(x,y)\) 的方法一般有如下三种:
+(1) 折线法; (2) 积分法; (3) 凑微分法.
+
+\textbf{例11}
+验证 \((\frac{y}{x} + x^2) dx + (\ln x - 2y) dy\) 在右半平面 \(x > 0\) 内是某一函数 \(u(x, y)\) 的全微分, 并求这样的一个 \(u(x, y)\).
+
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+---
+
+
+\subsubsection*{第一类曲面积分的定义}
+
+
+设曲面 \(\Sigma\) 是光滑的,函数 \(f(x,y,z)\) 在 \(\Sigma\) 上有界.把 \(\Sigma\) 任意分成 \(n\) 小块 \(\Delta S_{i}(\Delta S_{i}\) 同时也代表第 \(i\) 块小曲面的面积),设 \((\xi_{i},\eta_{i},\zeta_{i})\) 是 \(\Delta S_{i}\) 上任意取定的一点,作乘积 \(f(\xi_{i},\eta_{i},\zeta_{i})\Delta S_{i}(i = 1,2,\dots ,n)\) ,并作和 \(\sum_{i = 1}^{n}f(\xi_{i},\eta_{i},\zeta_{i})\Delta S_{i}\) 若当各小块曲面的直径的最大值 \(\lambda \rightarrow 0\) 时,这和极限总存在,且与曲面 \(\Sigma\) 的 分法及点 \((\xi_{i},\eta_{i},\zeta_{i})\) 的取法无关,则称此极限为函数 \(f(x,y,z)\) 在曲面 \(\Sigma\) 上对 面积的曲面积分或第一类曲面积分,记作 \(\iint_{\Sigma}f(x,y,z)\mathrm{d}S\) ,即
+\[\iint_{\Sigma}f(x,y,z)\mathrm{d}S = \lim_{\lambda \to 0}\sum_{i = 1}^{n}f(\xi_{i},\eta_{i},\zeta_{i})\Delta S_{i},\]
+其中 \(f(x,y,z)\) 叫做被积函数, \(\Sigma\) 叫做积分曲面.
+
+
+\subsubsection*{第一类曲面积分的计算}
+
+
+若积分曲面 Σ 由方程 z = z(x, y) 给出, Σ 在 xOy 面上的投影区域为 Dxy, 函数 z = z(x, y) 在 Dxy 上具有一阶连续偏导数, 被积函数 f(x, y, z) 在 Σ 上连续, 则
+\[ \iint_{\Sigma} f(x, y, z) \mathrm{d}S = \iint_{D_{xy}} f(x, y, z(x, y)) \sqrt{1 + [z_x'(x, y)]^2 + [z_y'(x, y)]^2} \mathrm{d}x \mathrm{d}y. \]
+第一类曲面积分的对称性 (见讲义)
+
+\textbf{例12} 求抛物面壳 \(z = \frac{1}{2}(x^2 + y^2)(0 \le z \le 1)\) 的质量, 此壳的面密度为 \(\mu = z\).
+
+
+\subsubsection*{第二类曲面积分的定义}
+
+
+设 Σ 为光滑的有向曲面, 函数 R(x, y, z) 在 Σ 上有界. 把 Σ 任意分成 n 块小曲面 ΔS_{i}(ΔS_{i} 同时也代表第 i 块小曲面的面积), ΔS_{i} 在 xOy 面上的投影为 (ΔS_{i})ₓᵧ, (ξ_{i}, η_{i}, ζ_{i}) 为 ΔS_{i} 上任意取定的一点, 作乘积 R(ξ_{i}, η_{i}, ζ_{i})(ΔS_{i})ₓᵧ(i = 1, 2, ..., n), 并作和
+∑ n R(ξi, ηi, ζi)(ΔSi)xy. 若当各小块曲面的直径的最大值 λ → 0 时, 这和的极限总存在, 且与曲面 Σ 的分法以及点 (ξi, ηi, ζi) 的取法无关, 则称此极限为函数 R(x, y, z) 在有向曲面 Σ 上对坐标 x, y 的曲面积分, 记作 ∬ Σ R(x, y, z)dxdy, 即
+\[ \iint_{\Sigma} R(x, y, z) dxdy = \lim_{\lambda \to 0} \sum_{i=1}^{n} R(\xi_i, \eta_i, \zeta_i)(\Delta S_i)_{xy}, \]
+其中 R(x, y, z) 叫做被积函数, Σ 叫做积分曲面.
+
+
+\subsubsection*{右手直角坐标系下有向曲面、法向量以及方向余弦的关系}
+
+
+| 曲面的表示方程 | 曲面的侧 | 法向量 | 方向余弦 |
+| :--- | :--- | :--- | :--- |
+| z = z(x, y) | 上侧 | (-z'_x, -z'_y, 1) | cos γ > 0 |
+| z = z(x, y) | 下侧 | (z'_x, z'_y, -1) | cos γ < 0 |
+| y = y(z, x) | 右侧 | (-y'_x, 1, -y'_z) | cos β > 0 |
+| y = y(z, x) | 左侧 | (y'_x, -1, y'_z) | cos β < 0 |
+| x = x(y, z) | 前侧 | (1, -x'_y, -x'_z) | cos α > 0 |
+| x = x(y, z) | 后侧 | (-1, x'_y, x'_z) | cos α < 0 |
+
+
+\subsubsection*{第二类曲面积分的计算}
+
+
+设积分曲面 \(\Sigma\) 由方程 \(z = z(x,y)\) 给出， \(\Sigma\) 在 \(xOy\) 面上的投影区域为 \(D_{xy}\) ，函数 \(z = z(x,y)\) 在 \(D_{xy}\) 上具有一阶连续偏导数，被积函数 \(R(x,y,z)\) 在 \(\Sigma\) 上连续.于是
+\[\iint_{\Sigma}R(x,y,z)\mathrm{d}x\mathrm{d}y = \pm \iint_{D_{xy}}R(x,y,z(x,y))\mathrm{d}x\mathrm{d}y.\]
+若 \(\Sigma\) 取上侧，即 \(\cos \gamma >0\) ，则上式右端取正号；若 \(\Sigma\) 取下侧，即 \(\cos \gamma < 0\) ，则上式右端取负号.
+
+第二类曲面积分为零的三种特殊情况：
+当曲面 \(\Sigma\) 垂直于 \(xOy\) 面时， \(\iint_{\Sigma}R(x,y,z)\mathrm{d}x\mathrm{d}y = 0\) 当曲面 \(\Sigma\) 垂直于 \(yOz\) 面时， \(\iint_{\Sigma}P(x,y,z)\mathrm{d}y\mathrm{d}z = 0\) 当曲面 \(\Sigma\) 垂直于 \(zOx\) 面时， \(\iint_{\Sigma}Q(x,y,z)\mathrm{d}z\mathrm{d}x = 0\)
+
+
+\subsubsection*{两类曲面积分之间的联系}
+
+
+两类曲面积分之间的联系如下：
+\[ \iint_{\Sigma} Pdy dz + Qdz dx + Rdx dy = \iint_{\Sigma} (P \cos \alpha + Q \cos \beta + R \cos \gamma) dS, \]
+其中 \(\cos \alpha\), \(\cos \beta\), \(\cos \gamma\) 为有向曲面 \(\Sigma\) 在点 \((x, y, z)\) 处的法向量的方向余弦.
+
+\textbf{例13}
+计算曲面积分 \(\iint_S \frac{x dy dz + z^2 dx dy}{x^2 + y^2 + z^2}\), 其中 \(S\) 是由曲面 \(x^2 + y^2 = R^2\) 及两平面 \(z = R\), \(z = -R(R > 0)\) 所围成立体表面的外侧.
+
+\textbf{例14}
+计算
+∬[f(x,y,z)+x]dydz+[2f(x,y,z)+y]dzdx+[f(x,y,z)+z]dxdy, 其中 f(x,y,z) 为连续函数, Σ 是平面 x-y+z=1 在第四卦限部分的上侧.
+
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+---
+
+## 第四节 曲面积分（二）
+
+
+\subsubsection*{高斯公式}
+
+
+设空间闭区域 Ω 由分片光滑的闭曲面 Σ 所围成. 若函数 P(x, y, z), Q(x, y, z), R(x, y, z) 在 Ω 上具有一阶连续偏导数, 则有
+\[ \iiint_{\Omega} \left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right) dv = \iint_{\Sigma} P dy dz + Q dz dx + R dx dy, \]
+或
+\[ \iiint_{\Omega} \left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right) dv = \iint_{\Sigma} (P \cos \alpha + Q \cos \beta + R \cos \gamma) dS. \]
+这里 Σ 是 Ω 的整个边界曲面的外侧, cos α, cos β, cos γ 是 Σ 在点 (x, y, z) 处的法向量的方向余弦.
+
+\textbf{例15}
+计算 \(\iint_{\Sigma} \frac{axdy dz + (z+a)^2 dxdy}{(x^2 + y^2 + z^2)^{\frac{1}{2}}}\)，其中 \(\Sigma\) 为下半球面 \(z = -\sqrt{a^2 - x^2 - y^2}\) 的上侧，\(a\) 为大于零的常数。
+
+\textbf{例16}
+计算曲面积分 I = ∫Σ x d y d z + y d z d x + z d x d y , 其中 Σ 是曲面 2 x 2 + 2 y 2 + z 2 = 4 的外侧.
+
+
+\subsubsection*{散度}
+
+
+设有向量场
+\[A(x,y,z) = P(x,y,z)i + Q(x,y,z)j + R(x,y,z)k,\]
+其中函数 \(P\) , \(Q\) , \(R\) 均具有一阶连续偏导数, \(\Sigma\) 是场内一片有向曲面, \(n\) 是 \(\Sigma\) 在点 \((x,y,z)\) 处的单位法向量, 则积分
+\[\iint_{S}A\cdot ndS\]
+称为向量场 \(A\) 通过曲面 \(\Sigma\) 向着指定侧的通量 (或流量).
+\(\frac{\partial P}{\partial x} +\frac{\partial Q}{\partial y} +\frac{\partial R}{\partial z}\) 叫做向量场 \(A\) 的散度, 记作 div \(A\) . 利用向量微分算子 \(\nabla = \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)\) , \(A\) 的散度 div \(A\) 也可以表达为 \(\nabla \cdot A\) , 即
+\[\operatorname {div} A = \nabla \cdot A.\]
+
+\textbf{例17} 向量场 \(u(x, y, z) = xy^2i + ye^z j + x \ln(1 + z^2)k\) 在点 \(P(1, 1, 0)\) 处的散度 \(\text{div } u = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.\)
+
+
+\subsubsection*{斯托克斯公式}
+
+
+设 \(\Gamma\) 为分段光滑的空间有向闭曲线， \(\Sigma\) 为以 \(\Gamma\) 为边界的分片光滑的有向曲面， \(\Gamma\) 的正向与 \(\Sigma\) 的侧符合右手规则（当右手除拇指外的四指沿 \(\Gamma\) 的绕行方向时，拇指所指的方向与 \(\Sigma\) 上法向量的指向相同，此时称 \(\Gamma\) 是有向曲面 \(\Sigma\) 的正向边界曲线).若函数 \(P(x,y,z)\) ， \(Q(x,y,z)\) ， \(R(x,y,z)\) 在曲面 \(\Sigma\) (连同边界 \(\Gamma\) )上具有一阶连续偏导数，则有
+\[\iint_{\Sigma}\left(\frac{\partial R}{\partial y} -\frac{\partial Q}{\partial z}\right)\mathrm{d}y\mathrm{d}z + \left(\frac{\partial P}{\partial z} -\frac{\partial R}{\partial x}\right)\mathrm{d}z\mathrm{d}x + \left(\frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y}\right)\mathrm{d}x\mathrm{d}y\] \[= \oint_{\Gamma}P\mathrm{d}x + Q\mathrm{d}y + R\mathrm{d}z.\]
+
+可以利用行列式记号把斯托克斯公式写成
+\[ \iint_{\Sigma} \begin{vmatrix} \frac{\mathrm{d}y\mathrm{d}z}{\partial x} & \frac{\mathrm{d}z\mathrm{d}x}{\partial y} & \frac{\mathrm{d}x\mathrm{d}y}{\partial z} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \end{vmatrix} = \oint_{\Gamma} P\mathrm{d}x + Q\mathrm{d}y + R\mathrm{d}z. \]
+利用两类曲面积分之间的联系, 还可以得到斯托克斯公式的另一形式:
+\[ \iint_{\Sigma} \begin{vmatrix} \cos\alpha & \cos\beta & \cos\gamma \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix} \mathrm{d}S = \oint_{\Gamma} P\mathrm{d}x + Q\mathrm{d}y + R\mathrm{d}z, \]
+其中 \(n = (\cos\alpha, \cos\beta, \cos\gamma)\) 为有向曲面 \(\Sigma\) 在点 \((x, y, z)\) 处的单位法向量.
+
+\textbf{例18} 设 \(L\) 是柱面 \(x^2 + y^2 = 1\) 与平面 \(z = x + y\) 的交线, 从 \(z\) 轴正向往 \(z\) 轴负向看去为逆时针方向, 则曲线积分 \(\oint_L xzdx + xdy + \frac{y^2}{2}dz = \underline{\hspace{2cm}}\).
+
+
+\subsubsection*{旋度}
+
+
+设有向量场
+\[A(x, y, z) = P(x, y, z)i + Q(x, y, z)j + R(x, y, z)k.\]
+若 \(P, Q, R\) 均具有一阶连续偏导数, 则向量
+\[ \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)i + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)j + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)k \]
+记作 rot A, 即
+\[ \text{rot } A = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) i + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) j + \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) k. \]
+
+\textbf{例19} 向量场 \(A(x, y, z) = (x + y + z)i + xyj + zk\) 的旋度 \(rot A = \underline{\hspace{2cm}}\)
+
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+
+## 第二部分：强化讲义
+
+
+\subsubsection*{考点 II: 第一类曲线积分}
+
+
+\textbf{例3}
+求 \(\int_L |x| ds\), \(L\) 为双纽线 \((x^2 + y^2)^2 = a^2(x^2 - y^2)(a > 0)\) 全弧段.
+第一类曲线积分的计算、双纽线.
+○ 双纽线关于 \(x\) 轴, \(y\) 轴均对称.
+○ \(|x|\) 既是关于 \(y\) 的偶函数, 又是关于 \(x\) 的偶函数.
+
+解 由对称性的结论可知, \(\int_{L} |x| \mathrm{d}s = 4 \int_{L_{1}} |x| \mathrm{d}s\), 其中 \(L_{1}\) 为 \(L\) 在第一象限中的部分. 在极坐标系下计算弧长. 写出 \(L\) 的极坐标方程.
+
+\textbf{例4} 设 \(L\) 为球面 \(x^{2} + y^{2} + z^{2} = 1\) 与平面 \(x + y + z = 0\) 的交线，则 \(\oint_{L} x y \mathrm{d}s =\) ______.
+第一类曲线积分的计算、轮换对称性.
+能用参数方程计算吗？
+积分弧段有什么特点？
+
+
+\subsubsection*{考点 III: 第二类曲线积分}
+
+
+\textbf{例5}
+设 L 是由点 A(1,0), 点 B(0,1), 点 C(-1,0) 三点从 A 到 B 再到 C 连成的折线, 则曲线积分 \(\int_{L} \frac{dx+dy}{|x|+|y|} =\)
+利用参数方程计算第二类曲线积分.
+解 \(L_1: y = -x + 1\), 其中 \(x\) 从 1 到 0. \(L_2: y = x + 1\), 其中 \(x\) 从 0 到 -1. \(\int_{L} \frac{dx+dy}{|x|+|y|} = \int_{L_1} \frac{dx+dy}{|x|+|y|} + \int_{L_2} \frac{dx+dy}{|x|+|y|}\)
+
+\textbf{例6}
+计算 \(\oint_{L} \frac{- ydx + xdy + z(4x^{2} + y^{2})dz}{4x^{2} + y^{2}}\) , 其中 \(L: \left\{ \begin{array}{l}4x^{2} + y^{2} = 1, \\ 2x + y + z = 1, \end{array} \right.\) 从 \(z\) 轴正向看去是逆时针的.
+本题易错点: 计算方法的选择.
+积分弧段有何特点? 被积函数有何特点?
+
+
+\subsubsection*{考点 IV: 格林公式、积分与路径无关}
+
+
+\textbf{例7}
+已知平面区域 \(D = \{(x, y) | 0 \le x \le \pi, 0 \le y \le \pi\}\), \(L\) 为 \(D\) 的正向边界. 试证:
+\begin{align*}
+(1) \quad & \oint_L xe^{\sin y} dy - ye^{-\sin x} dx = \oint_L xe^{-\sin y} dy - ye^{\sin x} dx; \\
+(2) \quad & \oint_L xe^{\sin y} dy - ye^{-\sin x} dx \ge 2\pi^2.
+\end{align*}
+第二类曲线积分的计算.
+曲线 L 有什么特点？平面区域 D 有什么特点？
+
+证明 (1) 利用格林公式.
+\[\oint_{L}x\mathrm{e}^{\sin y}\mathrm{d}y - y\mathrm{e}^{-\sin x}\mathrm{d}x =\] \[\oint_{L}x\mathrm{e}^{-\sin y}\mathrm{d}y - y\mathrm{e}^{\sin x}\mathrm{d}x =\]
+也可以如图将 \(L\) 分为4段,利用参数方程直接计算 \(\oint_{L}x\mathrm{e}^{-\sin y}\mathrm{d}y - y\mathrm{e}^{\sin x}\mathrm{d}x.\) \(\oint_{L}x\mathrm{e}^{\sin y}\mathrm{d}y - y\mathrm{e}^{-\sin x}\mathrm{d}x = \pi \int_{0}^{\pi}(\mathrm{e}^{\sin x} + \mathrm{e}^{-\sin x})\mathrm{d}x.\) 留作练习.
+
+(2) 利用第 (1) 问的结论.
+\begin{align*}
+\Phi_L x e^{\sin y} dy - y e^{-\sin x} dx = \\
+\frac{1}{2} (\Phi_L x e^{\sin y} dy - y e^{-\sin x} dx + \Phi_L x e^{-\sin y} dy - y e^{\sin x} dx)
+\end{align*}
+
+\textbf{例8} 设函数 \(\phi (y)\) 具有连续导数, 在围绕原点的任意分段光滑简单闭曲线 \(L\) 上, 曲线积分 \(\oint_{L} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}}\) 的值恒为同一常数. (I) 证明: 对右半平面 \(x > 0\) 内的任意分段光滑简单闭曲线 \(C\), 有 \(\oint_{C} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}} = 0\); (II) 求函数 \(\phi (y)\) 的表达式.
+第二类曲线积分的计算、积分与路径无关的条件.
+如何理解条件“在围绕原点的任意分段光滑简单闭曲线 L 上, 曲线积分 \(\oint_{L} \frac{\phi (y) \mathrm{d}x + 2xy \mathrm{d}y}{2x^{2} + y^{4}}\) 的值恒为同一常数”?
+
+解 (1) 如图所示, 任取右半平面上一条分段光滑简单闭曲线 \(C\), 令 \(C\) 的正向为逆时针方向, \(A\), \(B\), \(M\), \(N\) 为 \(C\) 上四点, \(P\) 为左半平面上的 一点.
+记曲线 \(L_{1}\) 为依次过 \(B\) , \(P\) , \(A\) 且绕原点的一段弧 \(\widehat{BPA}\) , \(L_{2}\) 为依次过 \(A\) , \(M\) , \(B\) 的一段弧 \(\widehat{AMB}\) , \(L_{3}\) 为依次过 \(A\) , \(N\) , \(B\) 的一段弧 \(\widehat{ANB}\) , 则 \(L_{1} + L_{2}\) 和 \(L_{1} + L_{3}\) 均为围绕原点的简单闭曲线, 且 \(L_{2} + L_{3}^{-} = C\) .
+
+由题设知,
+\[ \oint_{L_1+L_2} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} = \oint_{L_1+L_3} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} \]
+因此,
+\[ \oint_{L_1+L_2} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} - \oint_{L_1+L_3} \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4} = \oint_C \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^2} = 0 \]
+(II) 由第 (I) 问的结论可知, 在右半平面上, 积分 \(\int_L \frac{\varphi(y)dx + 2xy dy}{2x^2 + y^4}\) 与路径无关.
+分别计算 \(\frac{\partial Q}{\partial x}\) , \(\frac{\partial P}{\partial y}\) .
+
+\textbf{例9} 计算第一类曲线积分 \(\oint_{L} \frac{\partial f}{\partial n} ds\)，其中 \(f(x, y) = (x - 2)^2 + y^2\)，\(L\) 为单位圆周 \(x^2 + y^2 = 1\)，\(n\) 为 \(L\) 的外法线向量。 两类曲线积分之间的联系、方向导数。 两类曲线积分之间的联系 平面曲线弧 \(L\) 上的两类曲线积分之间有如下联系： \(\int_{L} Pdx + Qdy = \int_{L} (P \cos \alpha + Q \cos \beta) ds,\) 其中 \(\alpha(x, y)\)，\(\beta(x, y)\) 为有向曲线弧 \(L\) 在点 \((x, y)\) 处的切向量的方向角。
+
+方向角与实际角度 \(\theta\) 的关系
+方向导数存在的充分条件
+若函数 \(f(x,y)\) 在点 \(P_0(x_0,y_0)\) 处可微分, \(e_t = (\cos \alpha, \cos \beta)\) 是与方向 \(l\) 同向的单位向量, 则
+\[ \frac{\partial f}{\partial l} \bigg|_{(x_0, y_0)} = f'_x(x_0, y_0) \cos \alpha + f'_y(x_0, y_0) \cos \beta, \]
+其中 \(\cos \alpha\), \(\cos \beta\) 是方向 \(e_t\) 的方向余弦.
+
+\subsubsection*{考点 V: 第一类曲面积分}
+
+
+\textbf{例10}
+设薄片型物体 S 是圆锥面 \(z = \sqrt{x^2 + y^2}\) 被 \(z^2 = 2x\) 割下的有限部分, 其上任意一点处的密度为 \(\mu(x, y, z) = 9\sqrt{x^2 + y^2 + z^2}\), 记圆锥面与柱面的交线为 C.
+(I) 求 C 在 xOy 面上的投影曲线的方程;
+(II) 求 S 的质量 M.
+第一类曲面积分的应用、空间曲线的投影曲线的求法.
+若薄片型物体 S 的面密度为 \(\mu(x, y, z)\), 则 S 的质量为 \(M = \iint_S \mu(x, y, z) dS\).
+
+空间曲线 L :
+组
+\[
+\begin{cases}
+F(x, y, z) = 0, \\
+G(x, y, z) = 0
+\end{cases}
+\]
+线为
+\[
+\begin{cases}
+H(x, y) = 0, \\
+z = 0.
+\end{cases}
+\]
+
+\subsubsection*{考点 VI: 第二类曲面积分}
+
+
+\textbf{例12}
+计算曲面积分 \(I = \iint_{\Sigma} \frac{x^2 + y^2}{x} dy dz + \sqrt{x^2 + y^2} dz dx + z dx dy\), 其中 \(\Sigma\) 为上半球面 \(x^2 + y^2 + z^2 = 4\) 被柱面 \((x-1)^2 + y^2 = 1\) 所截得部分的上侧.
+两类曲面积分之间的联系、合一投影法.
+可考虑利用两类曲面积分之间的联系将曲面投影到 xOy 面上计算.
+
+两类曲面积分之间的联系
+\[ \iint_{\Sigma} P dy dz + Q dz dx + R dx dy = \iint_{\Sigma} (P \cos \alpha + Q \cos \beta + R \cos \gamma) dS, \]
+其中 \(\cos \alpha\), \(\cos \beta\), \(\cos \gamma\) 为有向曲面 \(\Sigma\) 在点 \((x, y, z)\) 处的法向量的方向余弦.
+方向余弦怎么算? dydz, dzdx 如何转换到 dxdy?
+
+解 曲面方程为 \(z = \sqrt{4 - x^2 - y^2}\)，法向量 \(\mathbf{n}\) 与 \(z\) 轴正向成锐角。利用合一投影法直接计算，将所求曲面积分转化为关于 \(x\)，\(y\) 的曲面积分。
+○ 投影区域 \(D\) .
+○ 曲面 \(\Sigma\) 的法向量 \(\mathbf{n}\) .
+○ 计算 \(I\) .
+\[I = \iint_{\Sigma} \frac{x^2 + y^2}{x} dy dz + \sqrt{x^2 + y^2} dz dx + z dx dy =\]
+
+\textbf{例13}
+设 Σ 为曲面 z = √x² + y²(1 ≤ x² + y² ≤ 4) 的下侧, f(x) 为连续函数. 计算
+\[I = \iint_{\Sigma} [xf(xy) + 2xy - y] dy dz + [yf(xy) + 2y + x] dz dx + [zf(xy) + z] dx dy.\]
+两类曲面积分之间的联系.
+被积函数含有抽象函数 f, 可考虑利用两类曲面积分之间的联系消去该抽象函数.
+典型错误: 补面再利用高斯公式.
+
+
+\subsubsection*{考点 VII: 高斯公式与斯托克斯公式}
+
+
+\textbf{例15}
+\(\Sigma\) 是球面 \((x-a)^2 + (y-b)^2 + (z-c)^2 = r^2\) 的外侧, 计算 \(\iint_{\Sigma} x^2 dy dz + y^2 dz dx + z^2 dx dy.\)
+高斯公式、利用形心公式简化计算.
+
+\subsubsection*{考点 VIII: 多元积分的应用}
+
+
+\textbf{例18}
+已知封闭曲面 S 的方程为 |x| + |y| + |z| = 1, 密度函数为 \(\rho = |x| + |z| + \frac{1}{3}z\), 求曲面 S 的重心.
+质心公式:
+\[ \bar{x} = \frac{\iiint\limits_{\Omega} x \rho dv}{\iiint\limits_{\Omega} M}, \quad \bar{y} = \frac{\iiint\limits_{\Omega} y \rho dv}{\iiint\limits_{\Omega} M}, \quad \bar{z} = \frac{\iiint\limits_{\Omega} z \rho dv}{\iiint\limits_{\Omega} M}, \]
+其中 \(M = \iiint\limits_{\Omega} \rho(x, y, z) dv\) 为物体的质量.
+曲面 S 有何特点?
+
+
+\medskip
+\textbf{同步习题}
+\medskip
+
+
+## 第三部分：强化习题
+
+\subsubsection*{考点1: 三重积分}
+
+
+设 \(\Omega = \{(x, y, z) | x^2 + y^2 + z^2 \leq 1\}\), 则 \(\iiint_{\Omega} z^2 dx dy dz = \underline{\hspace{1cm}}\).
+
+解 球面坐标系下, \(\Omega = \{(r, \varphi, \theta) | 0 \leq r \leq 1, 0 \leq \varphi \leq \pi, 0 \leq \theta \leq 2\pi\}\).
+
+设 \(f\) 为连续函数, \(f(0,0,0) = 1\), \(\Omega\) 为球心在原点, 半径为 \(r\) 的球体, 则极限 \(\lim_{r \to 0} \frac{1}{\pi r^3} \iiint_{\Omega} f(x,y,z) dv = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+求由锥面 \(z = \sqrt{x^2 + y^2}\)，平面 \(y = x\)，柱面 \(x^2 + y^2 = 2y\) 以及 \(xOy\) 面所围立体在第一卦限内的部分的体积。
+
+设函数 \(f(x,y,z)\) 连续, 且
+\begin{align*}
+f(x,y,z) &= \sqrt{x^2 + y^2} + z \iiint_{\Omega} f(x,y,z) \, \mathrm{d}v, \quad \text{其中区域} \\
+\Omega &= \{(x,y,z) | \sqrt{x^2 + y^2} \le z \le 1\}. \quad \text{求 } f(x,y,z) \text{ 的表达式}.
+\end{align*}
+
+设 \(f(z)\) 连续, \(\Omega = \{(x,y,z)|x^2 + y^2 + z^2 \le 1\}\)。证明
+\[ \iiint_{\Omega} f(z) \, dv = \pi \int_{-1}^{1} f(z)(1 - z^2) \, dz. \]
+
+
+\subsubsection*{考点 II: 第一类曲线积分}
+
+
+o 求 \(\int_L y ds\), \(L\) 为抛物线 \(y^2 = 2x\) 连接 \(A(2, -2)\) 到 \(B(8, 4)\) 的弧.
+
+求 \(\int_{L} x^{2} \mathrm{~d} s, \quad L: \left\{ \begin{array}{l} x^{2} + y^{2} + z^{2} = a^{2}, \\ x - y = 0. \end{array} \right.\)
+
+设曲线 \(L\) 为 \(x^{\frac{2}{3}} + y^{\frac{2}{3}} = 1\)，求 \(L\) 的长度.
+
+求 \(\int_{L}(x+y^{2})\mathrm{d}s\) , \(L:\left\{\begin{array}{l}x^{2}+y^{2}+z^{2}=a^{2},\\ x+y+z=0.\end{array}\right.\)
+
+
+\subsubsection*{考点 III: 第二类曲线积分}
+
+
+已知曲线 \(L\) 的方程为 \(y = 1 - |x| (x \in [-1, 1])\) , 起点是 \((-1, 0)\), 终点是 \((1, 0)\), 则曲线积分 \(\int_L xydx + x^2dy = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+求 \(\int_{L}(x+y)\mathrm{d}x+(y-x)\mathrm{d}y\) , \(L\) 为圆周 \((x-2)^{2}+y^{2}=1\) 的上半圆, 自点 \(A(1,0)\) 到点 \(B(3,0)\) .
+
+设闭曲线 \(L: \begin{cases} x^2 + y^2 + z^2 = 1, \\ x^2 + y^2 + z^2 = 2z, \end{cases}\) 从 \(z\) 轴正向看去为逆时针方向, 求 \(\oint_L (x + y) dx\).
+
+设闭曲线 \(L: \begin{cases} x^2 + y^2 + z^2 = 2, \\ x^2 + y^2 + z^2 = 2z, \end{cases}\) 从 \(z\) 轴正向看去为逆时针方向, 求 \(\oint_L |y - x|dx + zdz\).
+
+
+\subsubsection*{考点 IV: 格林公式、积分与路径无关}
+
+
+- 设 \(L_1: x^2 + y^2 = 1, \ L_2: x^2 + y^2 = 2, \ L_3: x^2 + 2y^2 = 2,\) \(L_4: 2x^2 + y^2 = 2\) 为四条逆时针方向的平面曲线, 记 \(I_i = \oint_{L_i} \left( y + \frac{y^3}{6} \right) dx + \left( 2x - \frac{x^3}{3} \right) dy (i = 1, 2, 3, 4),\) 则 \(\max\{I_1, I_2, I_3, I_4\} = (\)
+(A) \(I_1\). (B) \(I_2\). (C) \(I_3\). (D) \(I_4\).
+
+已知 \(L\) 是第一象限中从点 \((0,0)\) 沿圆周 \(x^{2} + y^{2} = 2x\) 到点 \((2,0)\)，再沿圆周 \(x^{2} + y^{2} = 4\) 到点 \((0,2)\) 的曲线段. 计算曲线积分 \(I = \int_{L} 3x^{2}ydx + (x^{3} + x - 2y)dy\).
+
+解 添加一条曲线 \(L'\)，使之从点 \((0,2)\) 到点 \((0,0)\)，方向沿 \(y\) 轴负向. \(L\) 与 \(L'\) 围成一平面封闭区域 \(D\)，\(L + L'\) 为区域 \(D\) 的正向边界.
+\[ \begin{aligned} \Phi_{L+L'} 3x^2ydx + (x^3 + x - 2y)dy = \\ \int_{L'} 3x^2ydx + (x^3 + x - 2y)d y = \end{aligned} \]
+
+设在上半平面 \(D = \{(x,y)|y > 0\}\) 内, 函数 \(f(x,y)\) 具有连续偏导数, 且对任意的 \(t > 0\) 都有 \(f(tx,ty) = t^{-2}f(x,y)\). 证明: 对 \(D\) 内的任意分段光滑的有向简单闭曲线 \(L\), 都有
+\[ \oint_L yf(x,y)dx - xf(x,y)dy = 0. \]
+
+验证
+\[ \int_{(0,0)}^{(\frac{\pi}{2},1)}(2xy^3 - y^2 \cos x) dx + (1 - 2y \sin x + 3x^2y^2) dy \]
+与路径无关, 并计算该积分.
+
+设 \(f(x)\) 有二阶连续导数, 且 \(f(0) = 0\), \(f'(0) = -1\). 已知曲线积分
+\[ \int_L [xe^{2x} - 6f(x)] \sin y dx - [5f(x) - f'(x)] \cos y dy \]
+与积分路径无关, 求 \(f(x)\).
+\[ \text{解} \quad \text{设 } P(x, y) = [xe^{2x} - 6f(x)] \sin y, \\ Q(x, y) = -[5f(x) - f'(x)] \cos y. \]
+由积分与路径无关可得, \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\),
+
+
+\subsubsection*{考点 V: 第一类曲面积分}
+
+
+- 设 \(\Sigma = \{(x, y, z) | x + y + z = 1, x \ge 0, y \ge 0, z \ge 0\}\), 则 \(\iint_{\Sigma} y^2 dS = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\).
+解 积分曲面满足方程 \(z = 1 - x - y\). 计算 \(\frac{\partial z}{\partial x}\), \(\frac{\partial z}{\partial y}\),
+
+计算 \(\iint_{\Sigma} x^2 dS\)，其中 \(\Sigma\) 为球心在原点的单位球面.
+
+求 \(\iint_{\Sigma} \frac{dS}{x^2 + y^2 + z^2}\)，其中 \(\Sigma\) 为介于平面 \(z = 0\) 与 \(z = 1\) 之间的柱面 \(x^2 + y^2 = 1\)。
+
+计算 \(I = \iint_{\Sigma} (x^2 + y^2 + z^2 + x + y + z) \mathrm{d}S\)，其中 \(\Sigma\) 为 \(x^2 + y^2 = z^2 (0 \le z \le 1)\) 的表面.
+
+设 \(a, b\) 为实数, 函数 \(z = 2 + ax^2 + by^2\) 在点 (3, 4) 处的方向导数中, 沿方向 \(l = -3i - 4j\) 的方向导数最大, 最大值为 10.
+(1) 求 \(a, b\);
+(II) 求曲面 \(z = 2 + ax^2 + by^2 (z \ge 0)\) 的面积.
+
+\subsubsection*{考点 VI: 第二类曲面积分}
+
+
+设 \(\Sigma\) 为曲面 \(x^{2} + y^{2} + 4z^{2} = 4(z \geq 0)\) 的上侧, 则 \(\iint_{\Sigma} \sqrt{4 - x^{2} - 4z^{2}} dxdy =\) ______.
+
+曲面 Σ 为锥面 \(z^2 = x^2 + y^2 (0 \le z \le 1)\) 的下侧, 计算
+\[ \iint_{\Sigma} |xyz| dxdy. \]
+
+\subsubsection*{考点 VII: 高斯公式与斯托克斯公式}
+
+
+- 设有界区域 \(\Omega\) 由平面 \(2x + y + 2z = 2\) 与三个坐标平面围成, \(\Sigma\) 为 \(\Omega\) 整个表面的外侧, 计算曲面积分 \(I = \iint_{\Sigma} (x^2 + 1) dy dz - 2y dz dx + 3z dx dy.\)
+
+\subsubsection*{考点 VIII: 多元积分的应用}
+
+
+在球面 \(x^2 + y^2 + z^2 = 1\) 上取以 \(A(1, 0, 0)\), \(B(0, 1, 0)\), \(C(0, 0, 1)\) 为顶点的球面三角形 \(\Sigma\), 如果该球面三角形的面密度为 \(\rho = x^2 + z^2\), 则此球面三角形的质量 \(m = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+设 \(\Omega = \{(x, y, z) | x^2 + y^2 \leq z \leq 1\}\)，则 \(\Omega\) 的形心的竖坐标 \(\bar{z} = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\)。
