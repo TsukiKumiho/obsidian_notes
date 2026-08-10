@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.7)  4 AUG 2026 09:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.7)  5 AUG 2026 10:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -584,6 +584,55 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(0.0pt, 614.295pt, 0.0pt)
+* v-part:(T,H,B)=(0.0pt, 794.96999pt, 0.0pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=614.295pt
+* \textheight=794.96999pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=-109.26999pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<010.png, id=1, 1121.18875pt x 1414.28375pt>
+File: 010.png Graphic file (type png)
+<use 010.png>
+Package pdftex.def Info: 010.png  used on input line 52.
+(pdftex.def)             Requested size: 614.31194pt x 774.902pt.
+
+
+
+(d:/TexLive/texlive/2025/texmf-dist/tex/generic/ctex/zhmap/ctex-zhmap-windows.t
+ex
+File: ctex-zhmap-windows.tex 2022/07/14 v2.5.10 Windows font map loader for pdf
+TeX and DVIPDFMx (CTEX)
+{d:/TexLive/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd
+}{Unicode.sfd}) [1
+
+
+ <./010.png (PNG copy)>]
 LaTeX Font Info:    Trying to load font information for C70+rm on input line 58
 .
 
@@ -618,13 +667,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-
-(d:/TexLive/texlive/2025/texmf-dist/tex/generic/ctex/zhmap/ctex-zhmap-windows.t
-ex
-File: ctex-zhmap-windows.tex 2022/07/14 v2.5.10 Windows font map loader for pdf
-TeX and DVIPDFMx (CTEX)
-{d:/TexLive/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd
-}{Unicode.sfd}) [1
+[2
 
 {d:/TexLive/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
@@ -636,7 +679,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[2]
+[3]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -645,7 +688,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[3]
+[4]
 Overfull \hbox (46.26965pt too wide) detected at line 176
 [][] \OML/cmm/m/it/12 P dx \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 Q dy \OT1/cmr/m/n
 /12 = [][](\OML/cmm/m/it/12 P []  \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 Q [] ^^L\
@@ -656,15 +699,6 @@ mm/m/it/12 P []  \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 Q [] ^^L \OT1/cmr/m/n/12 +
  []
 
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[4]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -916,20 +950,38 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[32] (./线面积分排版.aux)
+[32]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[33]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[34] (./线面积分排版.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10357 strings out of 473190
- 187073 string characters out of 5715812
- 584112 words of memory out of 5000000
- 33199 multiletter control sequences out of 15000+600000
+ 10365 strings out of 473190
+ 186913 string characters out of 5715812
+ 577112 words of memory out of 5000000
+ 33208 multiletter control sequences out of 15000+600000
  604829 words of font info for 205 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,13n,83p,1205b,529s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,13n,83p,1205b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
 imsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows
 /Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:
@@ -984,10 +1036,10 @@ pe1/public/amsfonts/cm/cmsy8.pfb><d:/TexLive/texlive/2025/texmf-dist/fonts/type
 1/public/esint-type1/esint10.pfb><d:/TexLive/texlive/2025/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb><d:/TexLive/texlive/2025/texmf-dist/fonts/
 type1/public/cm-super/sfrm1200.pfb>
-Output written on 线面积分排版.pdf (32 pages, 610608 bytes).
+Output written on 线面积分排版.pdf (34 pages, 1658079 bytes).
 PDF statistics:
- 679 PDF objects out of 1000 (max. 8388607)
- 439 compressed objects within 5 object streams
+ 686 PDF objects out of 1000 (max. 8388607)
+ 443 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 266 words of extra memory for PDF output out of 10000 (max. 10000000)
 
